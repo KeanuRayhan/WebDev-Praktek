@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="./assets/css/loopple/loopple.css">
     <link href="./output.css" rel="stylesheet">
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body>
@@ -162,133 +163,127 @@
     
     <div class="ease-soft-in-out xl:ml-68.5 relative h-full max-h-screen rounded-xl transition-all duration-200" id="panel">
         <!-- NAVIGATION BAR -->
-        <nav class="relative flex flex-wrap items-center justify-between px-0 py-2 mx-6 transition-all shadow-none duration-250 ease-soft-in rounded-2xl lg:flex-nowrap lg:justify-start" id="navbarTop" navbar-scroll="true">
-            <div class="flex items-center justify-between w-full px-4 py-1 mx-auto flex-wrap-inherit">
-                <div class="flex items-center mt-2 grow sm:mt-0 sm:mr-6 md:mr-0 lg:flex lg:basis-auto">
-                    
-                </div>
-            </div>
-        </nav>
+        <!-- Header -->
+        <header class="flex justify-between items-center p-4 bg-white shadow mt-4">
+            <!-- <h1 class="text-2xl font-semibold">DramaKu</h1> -->
+            <input type="text" placeholder="Search Drama" class="border rounded-lg p-2 w-1/3">
+        </header>
 
         <!-- MAIN CONTENT  -->
         <div class="w-full px-6 py-6 mx-auto loopple-min-height-78vh text-slate-500">
-            <h3 class="font-weight-400 mb-4">List Film</h3>
-            <div class="flex flex-wrap -mx-3 removable">
-                <div class="w-full max-w-full px-3 mb-6 lg:w-1/3 sm:flex-none">
-                    <div class="relative flex flex-col min-w-0 break-words bg-white border-0 shadow-soft-xl px-3 py-3 rounded-2xl bg-clip-border">
-                        <div class="relative">
-                            <a class="block shadow-xl rounded-2xl">
-                                <img src="https://cinemags.org/wp-content/uploads/2021/05/loki-poster.jpg" alt="img-blur-shadow" class="object-cover h-48 w-full shadow-soft-2xl rounded-2xl">
-                            </a>
-                        </div>
-                        <div class="flex-auto px-1 pt-6">
-                            <a href="javascript:;">
-                                <h5>Loki</h5>
-                            </a>
-                            <p class="relative z-10 mb-2 leading-normal text-transparent bg-slate-700 text-sm bg-clip-text">2021</p>
-                            <p class="relative z-10 mb-2 leading-normal text-transparent bg-slate-700 text-sm bg-clip-text">Superhero, Time Travel, Adventure, Fantasy</p>
-
-                            <div class="flex items-center justify-between mt-4">
-                                <button type="button" class="inline-block px-8 py-2 mb-0 font-bold text-center uppercase align-middle transition-all bg-transparent border border-solid rounded-lg shadow-none cursor-pointer leading-pro ease-soft-in text-xs hover:scale-102 active:shadow-soft-xs tracking-tight-soft border-fuchsia-500 text-fuchsia-500 hover:border-fuchsia-500 hover:bg-transparent hover:text-fuchsia-500 hover:opacity-75 hover:shadow-none active:bg-fuchsia-500 active:text-white active:hover:bg-transparent active:hover:text-fuchsia-500">Read</button>
-
-                            </div>
-                        </div>
+            <h3 class="text-2xl font-semibold font-weight-400 mb-4">List Film</h3>
+            <div class="w-5/5">
+                <div class="flex justify-between items-center mb-4">
+                    <div class="flex space-x-4">
+                        <select class="border rounded-lg p-2">
+                            <option>Year</option>
+                        </select>
+                        <select class="border rounded-lg p-2">
+                            <option>Genre</option>
+                        </select>
+                        <select class="border rounded-lg p-2">
+                            <option>Status</option>
+                        </select>
+                        <select class="border rounded-lg p-2">
+                            <option>Availability</option>
+                        </select>
+                        <select class="border rounded-lg p-2">
+                            <option>Award</option>
+                        </select>
                     </div>
+                    <button class="bg-orange-500 text-white rounded-lg px-4 py-2">Submit</button>
+                    <select class="border rounded-lg p-2">
+                        <option>Alphabetics</option>
+                    </select>
                 </div>
 
-                <div class="w-full max-w-full px-3 mb-6 lg:w-1/3 sm:flex-none">
-                    <div class="relative flex flex-col min-w-0 break-words bg-white border-0 shadow-soft-xl px-3 py-3 rounded-2xl bg-clip-border">
-                        <div class="relative">
-                            <a class="block shadow-xl rounded-2xl">
-                                <img src="https://cinemags.org/wp-content/uploads/2021/05/loki-poster.jpg" alt="img-blur-shadow" class="object-cover h-48 w-full shadow-soft-2xl rounded-2xl">
-                            </a>
-                        </div>
-                        <div class="flex-auto px-1 pt-6">
-                            <a href="javascript:;">
-                                <h5>Loki</h5>
-                            </a>
-                            <p class="relative z-10 mb-2 leading-normal text-transparent bg-slate-700 text-sm bg-clip-text">2021</p>
-                            <p class="relative z-10 mb-2 leading-normal text-transparent bg-slate-700 text-sm bg-clip-text">Superhero, Time Travel, Adventure, Fantasy</p>
-
-                            <div class="flex items-center justify-between mt-4">
-                                <button type="button" class="inline-block px-8 py-2 mb-0 font-bold text-center uppercase align-middle transition-all bg-transparent border border-solid rounded-lg shadow-none cursor-pointer leading-pro ease-soft-in text-xs hover:scale-102 active:shadow-soft-xs tracking-tight-soft border-fuchsia-500 text-fuchsia-500 hover:border-fuchsia-500 hover:bg-transparent hover:text-fuchsia-500 hover:opacity-75 hover:shadow-none active:bg-fuchsia-500 active:text-white active:hover:bg-transparent active:hover:text-fuchsia-500">Read</button>
-
-                            </div>
-                        </div>
+                <!-- Drama List -->
+                <div class="grid grid-cols-4 gap-4">
+                    <!-- Drama Card -->
+                    <div class="bg-white shadow rounded-lg p-4">
+                        <div class="bg-gray-200 h-40 mb-4"></div>
+                        <h2 class="text-lg leading-5 font-semibold mb-2">Title of the drama 1 that makes two lines</h2>
+                        <p class="text-base text-gray-500">2024</p>
+                        <p class="text-base text-gray-500">Genre 1, Genre 2, Genre 3</p>
+                        <p class="text-base text-gray-500">Rate 3.5/5</p>
+                        <p class="text-base text-gray-500">19 views</p>
                     </div>
-                </div>
 
-                <div class="w-full max-w-full px-3 mb-6 lg:w-1/3 sm:flex-none">
-                    <div class="relative flex flex-col min-w-0 break-words bg-white border-0 shadow-soft-xl px-3 py-3 rounded-2xl bg-clip-border">
-                        <div class="relative">
-                            <a class="block shadow-xl rounded-2xl">
-                                <img src="https://cinemags.org/wp-content/uploads/2021/05/loki-poster.jpg" alt="img-blur-shadow" class="object-cover h-48 w-full shadow-soft-2xl rounded-2xl">
-                            </a>
-                        </div>
-                        <div class="flex-auto px-1 pt-6">
-                            <a href="javascript:;">
-                                <h5>Loki</h5>
-                            </a>
-                            <p class="relative z-10 mb-2 leading-normal text-transparent bg-slate-700 text-sm bg-clip-text">2021</p>
-                            <p class="relative z-10 mb-2 leading-normal text-transparent bg-slate-700 text-sm bg-clip-text">Superhero, Time Travel, Adventure, Fantasy</p>
+                    <!-- Repeat Drama Card for each drama -->
+                    <!-- (copy the above div for multiple cards) -->
 
-                            <div class="flex items-center justify-between mt-4">
-                                <button type="button" class="inline-block px-8 py-2 mb-0 font-bold text-center uppercase align-middle transition-all bg-transparent border border-solid rounded-lg shadow-none cursor-pointer leading-pro ease-soft-in text-xs hover:scale-102 active:shadow-soft-xs tracking-tight-soft border-fuchsia-500 text-fuchsia-500 hover:border-fuchsia-500 hover:bg-transparent hover:text-fuchsia-500 hover:opacity-75 hover:shadow-none active:bg-fuchsia-500 active:text-white active:hover:bg-transparent active:hover:text-fuchsia-500">Read</button>
-
-                            </div>
-                        </div>
+                    <!-- Placeholder Cards -->
+                    <div class="bg-white shadow rounded-lg p-4">
+                        <div class="bg-gray-200 h-40 mb-4"></div>
+                        <h2 class="text-lg leading-5 font-semibold mb-2">Title of the drama 1 that makes two lines</h2>
+                        <p class="text-base text-gray-500">2024</p>
+                        <p class="text-base text-gray-500">Genre 1, Genre 2, Genre 3</p>
+                        <p class="text-base text-gray-500">Rate 3.5/5</p>
+                        <p class="text-base text-gray-500">19 views</p>
                     </div>
-                </div>
-                
-            </div>
-        </div>
 
-        <div class="grid grid-cols-4 gap-4">
-            <div class="relative flex flex-col min-w-0 break-words bg-white border-0 shadow-soft-xl px-3 py-3 rounded-2xl bg-clip-border">
-                <div class="relative">
-                    <a class="block shadow-xl rounded-2xl">
-                        <img src="https://cinemags.org/wp-content/uploads/2021/05/loki-poster.jpg" alt="img-blur-shadow" class="object-cover h-48 w-full shadow-soft-2xl rounded-2xl">
-                    </a>
-                </div>
-                <div class="flex-auto px-1 pt-6">
-                    <a href="javascript:;">
-                        <h5>Loki</h5>
-                    </a>
-                    <p class="relative z-10 mb-2 leading-normal text-transparent bg-slate-700 text-sm bg-clip-text">2021</p>
-                    <p class="relative z-10 mb-2 leading-normal text-transparent bg-slate-700 text-sm bg-clip-text">Superhero, Time Travel, Adventure, Fantasy</p>
-
-                    <div class="flex items-center justify-between mt-4">
-                        <button type="button" class="inline-block px-8 py-2 mb-0 font-bold text-center uppercase align-middle transition-all bg-transparent border border-solid rounded-lg shadow-none cursor-pointer leading-pro ease-soft-in text-xs hover:scale-102 active:shadow-soft-xs tracking-tight-soft border-fuchsia-500 text-fuchsia-500 hover:border-fuchsia-500 hover:bg-transparent hover:text-fuchsia-500 hover:opacity-75 hover:shadow-none active:bg-fuchsia-500 active:text-white active:hover:bg-transparent active:hover:text-fuchsia-500">Read</button>
-
+                    <div class="bg-white shadow rounded-lg p-4">
+                        <div class="bg-gray-200 h-40 mb-4"></div>
+                        <h2 class="text-lg leading-5 font-semibold mb-2">Title of the drama 1 that makes two lines</h2>
+                        <p class="text-base text-gray-500">2024</p>
+                        <p class="text-base text-gray-500">Genre 1, Genre 2, Genre 3</p>
+                        <p class="text-base text-gray-500">Rate 3.5/5</p>
+                        <p class="text-base text-gray-500">19 views</p>
                     </div>
-                </div>
-            </div>
 
-            <div class="relative flex flex-col min-w-0 break-words bg-white border-0 shadow-soft-xl px-3 py-3 rounded-2xl bg-clip-border">
-                <div class="relative">
-                    <a class="block shadow-xl rounded-2xl">
-                        <img src="https://cinemags.org/wp-content/uploads/2021/05/loki-poster.jpg" alt="img-blur-shadow" class="object-cover h-48 w-full shadow-soft-2xl rounded-2xl">
-                    </a>
-                </div>
-                <div class="flex-auto px-1 pt-6">
-                    <a href="javascript:;">
-                        <h5>Loki</h5>
-                    </a>
-                    <p class="relative z-10 mb-2 leading-normal text-transparent bg-slate-700 text-sm bg-clip-text">2021</p>
-                    <p class="relative z-10 mb-2 leading-normal text-transparent bg-slate-700 text-sm bg-clip-text">Superhero, Time Travel, Adventure, Fantasy</p>
-
-                    <div class="flex items-center justify-between mt-4">
-                        <button type="button" class="inline-block px-8 py-2 mb-0 font-bold text-center uppercase align-middle transition-all bg-transparent border border-solid rounded-lg shadow-none cursor-pointer leading-pro ease-soft-in text-xs hover:scale-102 active:shadow-soft-xs tracking-tight-soft border-fuchsia-500 text-fuchsia-500 hover:border-fuchsia-500 hover:bg-transparent hover:text-fuchsia-500 hover:opacity-75 hover:shadow-none active:bg-fuchsia-500 active:text-white active:hover:bg-transparent active:hover:text-fuchsia-500">Read</button>
-
+                    <div class="bg-white shadow rounded-lg p-4">
+                        <div class="bg-gray-200 h-40 mb-4"></div>
+                        <h2 class="text-lg leading-5 font-semibold mb-2">Title of the drama 1 that makes two lines</h2>
+                        <p class="text-base text-gray-500">2024</p>
+                        <p class="text-base text-gray-500">Genre 1, Genre 2, Genre 3</p>
+                        <p class="text-base text-gray-500">Rate 3.5/5</p>
+                        <p class="text-base text-gray-500">19 views</p>
                     </div>
+
+                    <!-- Row 2 -->
+                    <div class="bg-white shadow rounded-lg p-4">
+                        <div class="bg-gray-200 h-40 mb-4"></div>
+                        <h2 class="text-lg leading-5 font-semibold mb-2">Title of the drama 1 that makes two lines</h2>
+                        <p class="text-base text-gray-500">2024</p>
+                        <p class="text-base text-gray-500">Genre 1, Genre 2, Genre 3</p>
+                        <p class="text-base text-gray-500">Rate 3.5/5</p>
+                        <p class="text-base text-gray-500">19 views</p>
+                    </div>
+
+                    <div class="bg-white shadow rounded-lg p-4">
+                        <div class="bg-gray-200 h-40 mb-4"></div>
+                        <h2 class="text-lg leading-5 font-semibold mb-2">Title of the drama 1 that makes two lines</h2>
+                        <p class="text-base text-gray-500">2024</p>
+                        <p class="text-base text-gray-500">Genre 1, Genre 2, Genre 3</p>
+                        <p class="text-base text-gray-500">Rate 3.5/5</p>
+                        <p class="text-base text-gray-500">19 views</p>
+                    </div>
+
+                    <div class="bg-white shadow rounded-lg p-4">
+                        <div class="bg-gray-200 h-40 mb-4"></div>
+                        <h2 class="text-lg leading-5 font-semibold mb-2">Title of the drama 1 that makes two lines</h2>
+                        <p class="text-base text-gray-500">2024</p>
+                        <p class="text-base text-gray-500">Genre 1, Genre 2, Genre 3</p>
+                        <p class="text-base text-gray-500">Rate 3.5/5</p>
+                        <p class="text-base text-gray-500">19 views</p>
+                    </div>
+
+                    <div class="bg-white shadow rounded-lg p-4">
+                        <div class="bg-gray-200 h-40 mb-4"></div>
+                        <h2 class="text-lg leading-5 font-semibold mb-2">Title of the drama 1 that makes two lines</h2>
+                        <p class="text-base text-gray-500">2024</p>
+                        <p class="text-base text-gray-500">Genre 1, Genre 2, Genre 3</p>
+                        <p class="text-base text-gray-500">Rate 3.5/5</p>
+                        <p class="text-base text-gray-500">19 views</p>
+                    </div>
+
                 </div>
             </div>
 
-            <div>
-
-            </div>
         </div>
         
+                
+                    
         <!-- Footer -->
         <footer class="pt-4">
             <div class="w-full px-6 mx-auto">
