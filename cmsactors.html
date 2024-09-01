@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dramaku</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-900 text-white">
+    <header class="bg-black text-yellow-500 p-4 flex items-center justify-between">
+        <h1 class="text-3xl font-bold">Dramaku</h1>
+        <button class="bg-yellow-500 text-black font-bold py-2 px-4 rounded">PROFIL</button>
+    </header>
+
+    <div class="flex min-h-screen">
+        <aside class="w-1/6 bg-black p-4 space-y-8">
+            <nav class="space-y-4">
+                <a href="#" class="block text-lg">Dramas</a>
+                <a href="#" class="block text-lg">Countries</a>
+                <a href="#" class="block text-lg">Awards</a>
+                <a href="#" class="block text-lg">Genres</a>
+                <a href="#" class="block text-lg">Actors</a>
+                <a href="#" class="block text-lg">Comments</a>
+                <a href="#" class="block text-lg">Genres</a>
+                <a href="#" class="block text-lg">Users</a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="flex-1 p-8 min-h-screen w-full">
+            <div>
+                <h1 class="text-2xl font-bold mb-4 text-white">Actors</h1>
+            </div>
+            <!-- Form -->
+            <form action="" class="grid grid-cols-2 gap-4 mb-6">
+                <div class="flex flex-col mr-4">
+                    <div class="col-span-1 flex items-center space-x-4">
+                        <label for="country" class="w-1/4">Country</label>
+                        <input type="text" placeholder="Country" class="p-2 border rounded col-span-1 w-3/4 mb-4" id="country">
+                    </div>
+                    <div class="col-span-1 flex items-center space-x-4">
+                        <label for="actor-name" class="w-1/4">Actor Name</label>
+                        <input type="text" placeholder="Actor Name" class="p-2 border rounded col-span-1 w-3/4 mb-4" id="actor-name">
+                    </div>
+                    <div class="col-span-1 flex items-center space-x-4">
+                        <label for="birth-date" class="w-1/4">Birth Date</label>
+                        <input type="date" placeholder="Birth Date" class="p-2 border rounded col-span-1 w-3/4 mb-4 text-gray-400" id="birth-date">
+                    </div>
+                </div>
+                <div class="col-span-1 flex items-center space-x-4">
+                    <label for="upload-picture">Upload Picture</label>
+                    <input type="file" class="border rounded p-2" id="upload-picture">
+                </div>
+                <button class="px-4 py-2 bg-yellow-500 text-black font-bold rounded hover:bg-yellow-600 w-24">Submit</button>
+            </form>
+
+            <div class="w-5/5">
+                <!-- Table -->
+                <table class="min-w-full bg-gray-800 bg-white shadow-md rounded">
+                    <thead class="bg-slate-300">
+                        <tr>
+                            <th class="py-2 px-4 text-left">#</th>
+                            <th class="py-2 px-4 text-left w-2/12">Countries</th>
+                            <th class="py-2 px-4 text-left w-4/12">Actor Name</th>
+                            <th class="py-2 px-4 text-left w-3/12">Birth Date</th>
+                            <th class="py-2 px-4 text-left w-2/12">Photos</th>
+                            <th class="py-2 px-4 text-left w-1/12">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-t">
+                            <td class="py-2 px-4">1</td>
+                            <td class="py-2 px-4">
+                                <p>Japan</p>
+                            </td>
+                            <td class="py-2 px-4">
+                                <p>Takuya Kimura</p>
+                            </td>
+                            <td class="py-2 px-4">
+                                <p>19 Desember 1975</p>
+                            </td>
+                            <td class="py-2 px-4">
+                                <div class="w-30 h-40 bg-gray-300"></div>
+                            </td>
+                            <td class="py-2 px-4">
+                                <a href="#" class="text-blue-500 hover:underline mr-4">Edit</a>
+                                <a href="#" class="text-red-500 hover:underline">Delete</a>
+                            </td>
+                        </tr>
+                        <tr class="border-t">
+                            <td class="py-2 px-4">2</td>
+                            <td class="py-2 px-4">
+                                <p>Japan</p>
+                            </td>
+                            <td class="py-2 px-4">
+                                <p>Yuko Takeuchi</p>
+                            </td>
+                            <td class="py-2 px-4">
+                                <p>19 Oktober 1977</p>
+                            </td>
+                            <td class="py-2 px-4">
+                                <div class="w-30 h-40 bg-gray-300"></div>
+                            </td>
+                            <td class="py-2 px-4">
+                                <a href="#" class="text-blue-500 hover:underline mr-4">Edit</a>
+                                <a href="#" class="text-red-500 hover:underline">Delete</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="py-2 px-4">3</td>
+                            <td class="py-2 px-4">
+                                <p>Japan</p>
+                            </td>
+                            <td class="py-2 px-4">
+                                <p>Takuya Kimura</p>
+                            </td>
+                            <td class="py-2 px-4">
+                                <p>19 Desember 1975</p>
+                            </td>
+                            <td class="py-2 px-4">
+                                <div class="w-30 h-40 bg-gray-300"></div>
+                            </td>
+                            <td class="py-2 px-4">
+                                <a href="#" class="text-blue-500 hover:underline mr-4">Edit</a>
+                                <a href="#" class="text-red-500 hover:underline">Delete</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    <div>
+
+    
+    
+</body>
+</html>
