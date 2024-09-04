@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DramaKu - Genres</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white">
+    <div class="flex">
+        <!-- Sidebar -->
+        <div class="w-1/4 h-screen bg-gray-800 shadow-md">
+            <div class="p-6">
+                <h1 class="text-2xl font-bold text-orange-500">DramaKu</h1>
+                <ul class="mt-6">
+                    <li class="mb-2"><a href="#" class="text-gray-300 hover:text-orange-500">Dramas</a></li>
+                    <li class="mb-2"><a href="#" class="text-gray-300 hover:text-orange-500">Countries</a></li>
+                    <li class="mb-2"><a href="#" class="text-gray-300 hover:text-orange-500">Awards</a></li>
+                    <li class="mb-2"><a href="#" class="text-gray-300 hover:text-orange-500">Genres</a></li>
+                    <li class="mb-2"><a href="#" class="text-gray-300 hover:text-orange-500">Actors</a></li>
+                    <li class="mb-2"><a href="#" class="text-gray-300 hover:text-orange-500">Comments</a></li>
+                    <li class="mb-2"><a href="#" class="text-gray-300 hover:text-orange-500">Users</a></li>
+                    <li class="mb-2"><a href="#" class="text-gray-300 hover:text-orange-500">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="w-3/4 p-10 bg-gray-900">
+            <!-- Form Input Genre -->
+            <div class="mb-6">
+                <label for="genre" class="block text-gray-300 text-sm font-bold mb-2">Genre</label>
+                <div class="flex">
+                    <input type="text" id="genre" class="shadow appearance-none border border-gray-700 rounded w-full py-2 px-3 bg-gray-800 text-gray-300 leading-tight focus:outline-none focus:shadow-outline" placeholder="Enter genre">
+                    <button class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 ml-2 rounded focus:outline-none focus:shadow-outline">
+                        Submit
+                    </button>
+                </div>
+            </div>
+
+            <!-- Genre List Table -->
+            <div class="bg-gray-800 shadow-md rounded-lg overflow-hidden">
+                <table class="min-w-full bg-gray-800">
+                    <thead class="bg-gray-700 border-b border-gray-600">
+                        <tr>
+                            <th class="w-1/12 px-4 py-2 text-left text-gray-400 font-bold">#</th>
+                            <th class="w-9/12 px-4 py-2 text-left text-gray-400 font-bold">Genres</th>
+                            <th class="w-2/12 px-4 py-2 text-right text-gray-400 font-bold">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="bg-gray-700 border-b border-gray-600">
+                            <td class="px-4 py-2 text-gray-400">1</td>
+                            <td class="px-4 py-2">
+                                <input type="text" value="Romance" class="w-full border-none bg-transparent text-white focus:outline-none">
+                            </td>
+                            <td class="px-4 py-2 text-right">
+                                <a href="#" class="text-orange-500 hover:text-orange-700">Rename</a> | 
+                                <a href="#" class="text-red-500 hover:text-red-700">Delete</a>
+                            </td>
+                        </tr>
+                        <tr class="bg-gray-800 border-b border-gray-600">
+                            <td class="px-4 py-2 text-gray-400">2</td>
+                            <td class="px-4 py-2 text-white">Drama</td>
+                            <td class="px-4 py-2 text-right">
+                                <a href="#" class="text-orange-500 hover:text-orange-700">Rename</a> | 
+                                <a href="#" class="text-red-500 hover:text-red-700">Delete</a>
+                            </td>
+                        </tr>
+                        <tr class="bg-gray-700">
+                            <td class="px-4 py-2 text-gray-400">3</td>
+                            <td class="px-4 py-2 text-white">Action</td>
+                            <td class="px-4 py-2 text-right">
+                                <a href="#" class="text-orange-500 hover:text-orange-700">Rename</a> | 
+                                <a href="#" class="text-red-500 hover:text-red-700">Delete</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
