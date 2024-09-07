@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dramaku</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-900 text-white">
+    <header class="bg-black text-yellow-500 p-4 flex items-center justify-between">
+        <h1 class="text-3xl font-bold">Dramaku</h1>
+        <button class="bg-yellow-500 text-black font-bold py-2 px-4 rounded">PROFIL</button>
+    </header>
+
+    <div class="flex min-h-screen">
+        <aside class="w-1/6 bg-black p-4 space-y-8">
+            <nav class="space-y-4">
+                <a href="#" class="block text-lg">Dramas</a>
+                <a href="#" class="block text-lg">Countries</a>
+                <a href="#" class="block text-lg">Awards</a>
+                <a href="#" class="block text-lg">Genres</a>
+                <a href="#" class="block text-lg">Actors</a>
+                <a href="#" class="block text-lg">Comments</a>
+                <a href="#" class="block text-lg">Genres</a>
+                <a href="#" class="block text-lg">Users</a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="flex-1 p-8 min-h-screen w-full">
+            <div>
+                <h1 class="text-2xl font-bold mb-4 text-white">Comments</h1>
+            </div>
+            <!-- Form -->
+            <form action="" class="grid grid-cols-1 gap-4 mb-6">
+                <div class="flex space-x-4 justify-start items-center mb-4 gap-4">
+                    <div class="flex-1 flex items-center space-x-4">
+                        <label for="" class="mr-4">Filtered By :</label>
+                        <select class="border rounded-lg p-2 bg-gray-700">
+                            <option>None</option>
+                            <option>Approved</option>
+                            <option>Unapproved</option>
+                        </select>
+                    </div>
+                    <div class="flex-1 flex items-center space-x-4">
+                        <label for="" class="mr-4">Shows :</label>
+                        <select class="border rounded-lg p-2 bg-gray-700">
+                            <option>10</option>
+                        </select>
+                    </div>
+                    <div class="flex-1 justify-self-end space-x-4">
+                        <input type="text" placeholder="Search Comment" class="border rounded-lg p-2 w-3/4 mr-4 text-black" id="search-comment">
+                    </div>
+                </div>
+            </form>
+            
+            <div class="w-5/5">
+                <!-- Table -->
+                <table class="min-w-full bg-gray-800 bg-white shadow-md rounded">
+                    <thead class="bg-slate-300">
+                        <tr>
+                            <th class="py-2 px-4 text-left"></th>
+                            <th class="py-2 px-4 text-left">Username</th>
+                            <th class="py-2 px-4 text-left">Rate</th>
+                            <th class="py-2 px-4 text-left">Drama</th>
+                            <th class="py-2 px-4 text-left">Comments</th>
+                            <th class="py-2 px-4 text-left">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-t">
+                            <td class="p-4"><input type="checkbox"></td>
+                            <td class="p-4">
+                                <p>Nara</p>
+                            </td>
+                            <td class="p-4">
+                                <span><p>★★★★★</p></span>
+                            </td>
+                            <td class="p-4">
+                                <p>[2024] Japan - Eye Love You</p>
+                            </td>
+                            <td class="p-4">
+                                <p>I love this drama. It taught me a lot about money and finance...</p>
+                                <p>What the most thing that I love is about the kindness.</p>
+                            </td>
+                            <td class="p-4">
+                                <p>Unapproved</p>
+                            </td>
+                        </tr>
+                        <tr class="border-t"></tr>
+                            <td class="p-4"><input type="checkbox"></td>
+                            <td class="p-4">
+                                <p>Luffy</p>
+                            </td>
+                            <td class="p-4">
+                                <span><p>★★</p></span>
+                            </td>
+                            <td class="p-4">
+                                <p>[2024] Japan - Eye Love You</p>
+                            </td>
+                            <td class="p-4">
+                                <p>Meh</p>
+                            </td>
+                            <td class="p-4">
+                                <p>Approved</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="flex mt-4 gap-2">
+                <button><span>Select All</span></button>
+                <button class="ml-4 bg-blue-500 text-white px-4 py-2 rounded-md">Approve</button>
+                <button class="ml-2 bg-red-500 text-white px-4 py-2 rounded-md">Delete</button>
+            </div>
+        </div>
+    <div>
+</body>
+</html>
