@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dramaku</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-900 text-white">
+    <header class="bg-black text-yellow-500 p-4 flex items-center justify-between">
+        <h1 class="text-3xl font-bold">Dramaku</h1>
+        <button class="bg-yellow-500 text-black font-bold py-2 px-4 rounded">PROFIL</button>
+    </header>
+
+    <div class="flex min-h-screen">
+        <aside class="w-1/6 bg-black p-4 space-y-8">
+            <nav class="space-y-4">
+                <a href="#" class="block text-lg">Dramas</a>
+                <a href="#" class="block text-lg">Countries</a>
+                <a href="#" class="block text-lg">Awards</a>
+                <a href="#" class="block text-lg">Genres</a>
+                <a href="#" class="block text-lg">Actors</a>
+                <a href="#" class="block text-lg">Comments</a>
+                <a href="#" class="block text-lg">Genres</a>
+                <a href="#" class="block text-lg">Users</a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="flex-1 p-8 min-h-screen w-full">
+            <div>
+                <h1 class="text-2xl font-bold mb-4 text-white">Users</h1>
+            </div>
+            <!-- Form -->
+            <form action="" class="grid grid-cols-1 gap-4 mb-6">
+                <div class="flex flex-row mr-4 gap-4">
+                    <div class="flex-1 flex items-center space-x-4">
+                        <label for="username" class="mr-4">Username</label>
+                        <input type="text" placeholder="Username" class="p-2 border rounded col-span-1 w-3/4 mb-4" id="username">
+                    </div>
+                    <div class="flex-1 flex items-center space-x-4">
+                        <label for="email" class="mr-4">Email</label>
+                        <input type="text" placeholder="Email" class="p-2 border rounded col-span-1 w-3/4 mb-4" id="email">
+                    </div>
+                </div>
+                <button class="px-4 py-2 bg-yellow-500 text-black font-bold rounded hover:bg-yellow-600 w-24">Submit</button>
+                <input type="text" placeholder="Search Username" class="border rounded-lg p-2 w-1/3 mr-4 text-black justify-self-end" id="search-username">
+            </form>
+            
+            <div class="w-5/5">
+                <!-- Table -->
+                <table class="min-w-full bg-gray-800 bg-white shadow-md rounded">
+                    <thead class="bg-slate-300">
+                        <tr>
+                            <th class="py-2 px-4 text-left">#</th>
+                            <th class="py-2 px-4 text-left w-4/12">Username</th>
+                            <th class="py-2 px-4 text-left w-4/12">Email</th>
+                            <th class="py-2 px-4 text-left w-3/12">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-t">
+                            <td class="py-2 px-4">1</td>
+                            <td class="py-2 px-4">
+                                <p>anita1</p>
+                            </td>
+                            <td class="py-2 px-4">
+                                <p>anita@gmail.com</p>
+                            </td>
+                            <td class="py-2 px-4">
+                                <a href="#" class="text-blue-500 hover:underline mr-4">Send First Email</a>
+                                <a href="#" class="text-blue-500 hover:underline mr-4">Edit</a>
+                                <a href="#" class="text-red-500 hover:underline">Delete</a>
+                            </td>
+                        </tr>
+                        <tr class="border-t"></tr>
+                            <td class="py-2 px-4">2</td>
+                            <td class="py-2 px-4">
+                                <p>borang</p>
+                            </td>
+                            <td class="py-2 px-4">
+                                <p>bora@yahoo.com</p>
+                            </td>
+                            <td class="py-2 px-4">
+                                <a href="#" class="text-blue-500 hover:underline mr-4">Send First Email</a>
+                                <a href="#" class="text-blue-500 hover:underline mr-4">Edit</a>
+                                <a href="#" class="text-red-500 hover:underline">Delete</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    <div>
+
+    
+    
+</body>
+</html>
