@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dramaku</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-950 text-white">
+    <!-- Header -->
+    <header class="bg-black text-yellow-500 p-4 flex items-center justify-between">
+        <h1 class="text-3xl font-bold">Dramaku</h1>
+        <div class="flex items-center space-x-2 w-full max-w-md">
+            <input type="text" placeholder="Search" class="flex-1 p-2 rounded border bg-white-800 text-white">
+            <button class="bg-yellow-500 text-black font-bold py-2 px-4 rounded">Search</button>
+        </div>
+        <button class="bg-yellow-500 text-black font-bold py-2 px-4 rounded">LOGIN</button>
+    </header>
+    
+    <!-- Sidebar & Main Content -->
+    <div class="flex min-h-screen">
+        <!-- Sidebar -->
+        <aside class="w-1/6 bg-black p-4 space-y-8">
+            <nav class="space-y-4">
+                <a href="#" class="block text-lg">Home</a>
+                <a href="#" class="block text-lg">Downloads</a>
+                <a href="#" class="block text-lg">Categories</a>
+                <a href="#" class="block text-lg">Trending</a>
+            </nav>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="flex-1 p-8">
+            <!-- Filters and Sorting -->
+            <div class="p-4 flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
+                <div class="flex flex-wrap items-center space-x-2">
+                    <label class="whitespace-nowrap">Filtered by:</label>
+                    <select class="p-2 bg-gray-700 text-white rounded-lg">
+                        <option>Year</option>
+                    </select>
+                    <select class="p-2 bg-gray-700 text-white rounded-lg">
+                        <option>Genre</option>
+                    </select>
+                    <select class="p-2 bg-gray-700 text-white rounded-lg">
+                        <option>Status</option>
+                    </select>
+                    <select class="p-2 bg-gray-700 text-white rounded-lg">
+                        <option>Availability</option>
+                    </select>
+                    <select class="p-2 bg-gray-700 text-white rounded-lg">
+                        <option>Award</option>
+                    </select>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <label class="whitespace-nowrap">Sorted by:</label>
+                    <select class="p-2 bg-gray-700 text-white rounded-lg">
+                        <option>Alphabetic</option>
+                    </select>
+                </div>
+            </div>
+            
+            <!-- Drama List -->
+            <div class="p-4 space-y-5">
+                <div class="bg-gray-800 px-5 py-6 rounded-lg flex items-start">
+                    <div class="w-32 h-40 bg-gray-400 rounded-lg mr-10"></div>
+                    <div class="flex-1 flex flex-col justify-between">
+                        <div>
+                            <h2 class="text-xl font-bold">Title of drama</h2>
+                            <div class="mt-1">2024</div>
+                            <div class="mt-1">Genre 1, Genre 2, Genre 3.</div>
+                            <div class="mt-1">Aktor 1, Aktor 2, Aktor 3.</div>
+                        </div>
+                        <div class="text-sm text-right">view 16</div>
+                    </div>
+                </div>
+
+                <!-- Repeat for other dramas -->
+                <div class="bg-gray-800 px-5 py-6 rounded-lg flex items-start">
+                    <div class="w-32 h-40 bg-gray-400 rounded-lg mr-10"></div>
+                    <div class="flex-1 flex flex-col justify-between">
+                        <div>
+                            <h2 class="text-xl font-bold">Title of drama</h2>
+                            <div class="mt-1">2024</div>
+                            <div class="mt-1">Genre 1, Genre 2, Genre 3.</div>
+                            <div class="mt-1">Aktor 1, Aktor 2, Aktor 3.</div>
+                        </div>
+                        <div class="text-sm text-right">view 16</div>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-800 px-5 py-6 rounded-lg flex items-start">
+                    <div class="w-32 h-40 bg-gray-400 rounded-lg mr-10"></div>
+                    <div class="flex-1 flex flex-col justify-between">
+                        <div>
+                            <h2 class="text-xl font-bold">Title of drama</h2>
+                            <div class="mt-1">2024</div>
+                            <div class="mt-1">Genre 1, Genre 2, Genre 3.</div>
+                            <div class="mt-1">Aktor 1, Aktor 2, Aktor 3.</div>
+                        </div>
+                        <div class="text-sm text-right">view 16</div>
+                    </div>
+                </div>
+                <!-- Add more drama items as needed -->
+            </div>
+        </main>
+    </div>
+</body>
+</html>
