@@ -7,8 +7,8 @@ import ActorsList from './components/ActorsList';
 import TrailerSection from './components/TrailerSection';
 import ReviewsSection from './components/ReviewsSection';
 import AddReviewSection from './components/AddReviewSection';
-import LoginPage from '././pages/LoginPages'; // Import LoginPage
-import RegistrationPage from '././pages/RegistrationPage'; // Import RegistrationPage
+import LoginPage from './pages/LoginPage'; // Import LoginPage
+import RegistrationPage from './pages/RegistrationPage'; // Import RegistrationPage
 import CountriesPage from './pages/CMSCountries'; // Import CountriesPage
 import CommentsPage from './pages/CMSComments';
 import ActorsPage from './pages/CMSActors';
