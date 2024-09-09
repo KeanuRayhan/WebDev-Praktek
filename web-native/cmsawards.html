@@ -1,111 +1,93 @@
-<!-- Loopple Templates: https://www.loopple.com/templates | Copyright Loopple (https://www.loopple.com) | This copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. -->
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>DRAMAKU</title>
-    <link href="https://demos.creative-tim.com/soft-ui-dashboard-tailwind/assets/css/nucleo-icons.css" rel="stylesheet" />
-
-    <script src="https://unpkg.com/@popperjs/core@2"></script>
-    <link rel="stylesheet" href="./assets/css/theme.css">
-    <link rel="stylesheet" href="./assets/css/loopple/loopple.css">
-</head>
-
-<body>
-    <aside class="max-w-62.5 ease-nav-brand z-990 absolute inset-y-0 my-4 ml-4 block w-full -translate-x-full flex-wrap items-center justify-between overflow-y-auto rounded-2xl border-0 bg-white p-0 antialiased shadow-none transition-transform duration-200 xl:left-0 xl:translate-x-0 xl:bg-transparent text-slate-500" id="sidenav-main">
-        <div class="h-19.5">
-            <i class="absolute top-0 right-0 hidden p-4 opacity-50 cursor-pointer fas fa-times text-slate-400 xl:hidden" sidenav-close="" aria-hidden="true"></i>
-            <a class="block px-8 py-6 m-0 text-sm whitespace-nowrap text-slate-700" href="javascript:;">
-                <img src="https://demos.creative-tim.com/soft-ui-dashboard-tailwind/assets/img/logo-ct.png" class="inline h-full max-w-full transition-all duration-200 ease-nav-brand max-h-8" alt="main_logo">
-                <span class="ml-1 font-semibold transition-all duration-200 ease-nav-brand">NFTs</span>
-            </a>
-        </div>
-        <hr class="h-px mt-0 bg-transparent bg-gradient-horizontal-dark">
-
-        <div class="flex min-h-screen">
-           <!-- Sidebar -->
-   
-            <aside class="w-64 bg-gray-200 p-4">
-                <h2 class="text-xl font-bold mb-6">DramaKu</h2>
-                <nav>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="block p-2 hover:bg-gray-300 rounded">Dramas</a></li>
-                        <li><a href="#" class="block p-2 hover:bg-gray-300 rounded">Countries</a></li>
-                        <li><a href="#" class="block p-2 hover:bg-gray-300 rounded">Awards</a></li>
-                        <li><a href="#" class="block p-2 hover:bg-gray-300 rounded">Genres</a></li>
-                        <li><a href="#" class="block p-2 hover:bg-gray-300 rounded">Actors</a></li>
-                        <li><a href="#" class="block p-2 hover:bg-gray-300 rounded">Comments</a></li>
-                        <li><a href="#" class="block p-2 bg-gray-300 rounded">Users</a></li>
-                        <li><a href="#" class="block p-2 hover:bg-gray-300 rounded">Logout</a></li>
-                    </ul>
-                </nav>
-            </aside>
-        <div>
-    </aside>
-
-    <div class="ease-soft-in-out xl:ml-68.5 relative h-full max-h-screen rounded-xl transition-all duration-200" id="panel">
-        <nav class="relative flex flex-wrap items-center justify-between px-0 py-2 mx-6 transition-all shadow-none duration-250 ease-soft-in rounded-2xl lg:flex-nowrap lg:justify-start" id="navbarTop" navbar-scroll="true">
-            <div class="flex items-center justify-between w-full px-4 py-1 mx-auto flex-wrap-inherit"></div>
-        </nav>
-        <div class="w-full px-6 py-6 mx-auto loopple-min-height-78vh text-slate-500">
-           
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Dramaku</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body class="bg-gray-900 text-black">
+<body class="bg-gray-900 text-white">
+    <header class="bg-black text-yellow-500 p-4 flex items-center justify-between">
+        <h1 class="text-3xl font-bold">Dramaku</h1>
+        <button class="bg-yellow-500 text-black font-bold py-2 px-4 rounded">PROFIL</button>
+    </header>
 
-    <main class="flex-1 p-6">
-        <h1 class="text-2xl font-bold mb-4">Users</h1>
+    <div class="flex min-h-screen">
+        <aside class="w-1/6 bg-black p-4 space-y-8">
+            <nav class="space-y-4">
+                <a href="#" class="block text-lg">Dramas</a>
+                <a href="#" class="block text-lg">Countries</a>
+                <a href="#" class="block text-lg">Awards</a>
+                <a href="#" class="block text-lg">Genres</a>
+                <a href="#" class="block text-lg">Actors</a>
+                <a href="#" class="block text-lg">Comments</a>
+                <a href="#" class="block text-lg">Genres</a>
+                <a href="#" class="block text-lg">Users</a>
+            </nav>
+        </aside>
 
-        <!-- Form -->
-        <div class="bg-white p-6 rounded shadow-md mb-6">
-            <div class="grid grid-cols-2 gap-4 mb-4">
-                <input type="text" placeholder="Username" class="p-2 border border-gray-300 rounded">
-                <input type="text" placeholder="Email" class="p-2 border border-gray-300 rounded">
+        <!-- Main Content -->
+        <div class="flex-1 p-8">
+            <h1 class="text-2xl font-bold mb-4 text-white">Awards</h1>
+
+            <!-- Form Input -->
+            <form action="" class="grid grid-cols-1 gap-4 mb-6">
+                <div class="flex space-x-4 justify-start items-center mb-4 gap-4">
+                    <div class="flex-1 flex items-center space-x-4">
+                        <label for="country" class="mr-4">Country:</label>
+                        <input type="text" id="country" placeholder="Enter country" class="border rounded-lg p-2 bg-gray-700 text-white">
+                    </div>
+                    <div class="flex-1 flex items-center space-x-4">
+                        <label for="year" class="mr-4">Year:</label>
+                        <input type="text" id="year" placeholder="Enter year" class="border rounded-lg p-2 bg-gray-700 text-white">
+                    </div>
+                    <div class="flex-1 flex items-center space-x-4">
+                        <label for="award" class="mr-4">Awards:</label>
+                        <input type="text" id="award" placeholder="Enter award" class="border rounded-lg p-2 bg-gray-700 text-white">
+                    </div>
+                    <button type="submit" class="bg-yellow-500 text-black font-bold py-2 px-4 rounded">Submit</button>
+                </div>
+            </form>
+
+            <!-- Table -->
+            <div class="w-full">
+                <table class="min-w-full bg-gray-800 shadow-md rounded">
+                    <thead class="bg-slate-300">
+                        <tr>
+                            <th class="py-2 px-4 text-left">#</th>
+                            <th class="py-2 px-4 text-left">Countries</th>
+                            <th class="py-2 px-4 text-left">Years</th>
+                            <th class="py-2 px-4 text-left">Awards</th>
+                            <th class="py-2 px-4 text-left">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-t">
+                            <td class="p-4">1</td>
+                            <td class="p-4">Japan</td>
+                            <td class="p-4">2024</td>
+                            <td class="p-4">Japanese Drama Awards Spring 2024</td>
+                            <td class="p-4">
+                                <a href="#" class="text-blue-500">Edit</a> | 
+                                <a href="#" class="text-red-500">Delete</a>
+                            </td>
+                        </tr>
+                        <tr class="border-t">
+                            <td class="p-4">2</td>
+                            <td class="p-4">Korea</td>
+                            <td class="p-4">2024</td>
+                            <td class="p-4">Korean Drama Awards Spring 2024</td>
+                            <td class="p-4">
+                                <a href="#" class="text-blue-500">Edit</a> | 
+                                <a href="#" class="text-red-500">Delete</a>
+                            </td>
+                        </tr>
+                        <!-- Add more rows as needed -->
+                    </tbody>
+                </table>
             </div>
-            <button class="bg-orange-500 text-white px-4 py-2 rounded">Submit</button>
         </div>
-
-        <!-- User Table -->
-        <div class="bg-white rounded shadow-md">
-            <table class="min-w-full border border-gray-300">
-                <thead>
-                    <tr class="bg-gray-100 text-left">
-                        <th class="p-2 border-b">Username</th>
-                        <th class="p-2 border-b">Email</th>
-                        <th class="p-2 border-b">Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="bg-red-100">
-                        <td class="p-2 border-b">anita1</td>
-                        <td class="p-2 border-b">anita@gmail.com</td>
-                        <td class="p-2 border-b">
-                            <a href="#" class="text-red-500 hover:underline">Send first email</a> |
-                            <a href="#" class="text-blue-500 hover:underline">Edit</a> |
-                            <a href="#" class="text-red-500 hover:underline">Delete</a>
-                        </td>
-                    </tr>
-                    <tr class="">
-                        <td class="p-2 border-b">borang</td>
-                        <td class="p-2 border-b">bora@yahoo.com</td>
-                        <td class="p-2 border-b">
-                            <a href="#" class="text-red-500 hover:underline">Send first email</a> |
-                            <a href="#" class="text-blue-500 hover:underline">Edit</a> |
-                            <a href="#" class="text-red-500 hover:underline">Delete</a>
-                        </td>
-                    </tr>
-                    <!-- Tambahkan lebih banyak pengguna sesuai kebutuhan -->
-                </tbody>
-            </table>
-        </div>
-    </main>
-
-   
-
+    </div>
 </body>
 </html>
