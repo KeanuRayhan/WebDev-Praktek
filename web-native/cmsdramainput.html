@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dramaku</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-900 text-white">
+    <header class="bg-black text-yellow-500 p-4 flex items-center justify-between">
+        <h1 class="text-3xl font-bold">Dramaku</h1>
+        <button class="bg-yellow-500 text-black font-bold py-2 px-4 rounded">PROFIL</button>
+    </header>
+
+    <div class="flex min-h-screen">
+        <aside class="w-1/6 bg-black p-4 space-y-8">
+            <nav class="space-y-4">
+                <a href="#" class="block text-lg">Dramas</a>
+                <a href="#" class="block text-lg">Countries</a>
+                <a href="#" class="block text-lg">Awards</a>
+                <a href="#" class="block text-lg">Genres</a>
+                <a href="#" class="block text-lg">Actors</a>
+                <a href="#" class="block text-lg">Comments</a>
+                <a href="#" class="block text-lg">Genres</a>
+                <a href="#" class="block text-lg">Users</a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="flex-1 p-8 min-h-screen w-full">
+            <div>
+                <h1 class="text-2xl font-bold mb-4 text-white">Input Movie</h1>
+            </div>
+
+            <!-- Input Fields and Layout -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="space-y-2 justify-self-center">
+                    <label for="upload-picture" class="block mb-2">Upload Poster</label>
+                    <input type="file" class="border rounded p-2 h-72 w-30 bg-gray-700" id="upload-picture">
+                </div>
+
+                <div class="space-y-4 col-span-2">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label for="movie_title" class="block mb-2">Title</label>
+                            <input type="text" id="movie_title" class="w-full p-2 bg-gray-700 rounded" placeholder="Movie Title">
+                        </div>
+                        <div>
+                            <label for="alternative_title" class="block mb-2">Alternative Title</label>
+                            <input type="text" id="alternative_title" class="w-full p-2 bg-gray-700 rounded" placeholder="Alternative Title">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label for="year" class="block mb-2">Year</label>
+                            <input type="number" id="year" class="w-full p-2 bg-gray-700 rounded" placeholder="2024">
+                        </div>
+                        <div>
+                            <label for="country" class="block mb-2">Country</label>
+                            <input type="text" id="country" class="w-full p-2 bg-gray-700 rounded" placeholder="Country">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="synopsis" class="block mb-2">Synopsis</label>
+                        <textarea id="synopsis" rows="4" class="w-full p-2 bg-gray-700 rounded" placeholder="Synopsis"></textarea>
+                    </div>
+
+                    <div>
+                        <label for="fansub" class="block mb-2">Fansub</label>
+                        <input type="text" id="fansub" class="w-full p-2 bg-gray-700 rounded" placeholder="Fansub: @aoisub on X">
+                    </div>
+
+                    <div class="grid grid-cols-4 gap-2">
+                        <label class="block col-span-4">Genres</label>
+                        <div>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="form-checkbox bg-gray-700 text-yellow-500">
+                                <span class="ml-2">Adventure</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="form-checkbox bg-gray-700 text-yellow-500">
+                                <span class="ml-2">Romance</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="form-checkbox bg-gray-700 text-yellow-500">
+                                <span class="ml-2">Romance</span>
+                            </label>
+                        </div>
+                        <div>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="form-checkbox bg-gray-700 text-yellow-500">
+                                <span class="ml-2">Drama</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="form-checkbox bg-gray-700 text-yellow-500">
+                                <span class="ml-2">Slice of Life</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="add_actor" class="block mb-2">Add Actor (Up to 9)</label>
+                        <input type="text" id="add_actor" class="w-full p-2 bg-gray-700 rounded" placeholder="Search Actor Name">
+                        <div class="flex gap-4 mt-4 mb-4">
+                            <div class="text-center">
+                                <img src="actor1.png" alt="Actor 1" class="w-24 h-36 mx-auto rounded bg-gray-700 object-cover">
+                                <p class="mt-2">Actor Name</p>
+                            </div>
+                            <div class="text-center">
+                                <img src="actor2.png" alt="Actor 2" class="w-24 h-36 mx-auto rounded bg-gray-700 object-cover">
+                                <p class="mt-2">Actor Name</p>
+                            </div>
+                            <div class="text-center">
+                                <img src="actor3.png" alt="Actor 3" class="w-24 h-36 mx-auto rounded bg-gray-700 object-cover">
+                                <p class="mt-2">Actor Name</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="link_trailer" class="block mb-2">Link Trailer</label>
+                        <input type="text" id="link_trailer" class="w-full p-2 bg-gray-700 rounded" placeholder="Link Trailer">
+                    </div>
+
+                    <div>
+                        <label for="award" class="block mb-2">Award</label>
+                        <input type="text" id="award" class="w-full p-2 bg-gray-700 rounded" placeholder="Award">
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-6 text-center">
+                <button class="bg-green-500 text-white text-xl font-bold py-2 px-4 rounded">Submit</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
