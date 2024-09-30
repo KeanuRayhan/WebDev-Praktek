@@ -14,9 +14,9 @@ import CommentsPage from './pages/CMSComments';
 import ActorsPage from './pages/CMSActors';
 import UsersPage from './pages/CMSUsers';
 import Home from './pages/Home';
-import ValidasiMovie from './pages/ValidasiMovie';
-import CMSMovie from './pages/CMSMovie';
-import CMSMovieInput from './pages/CMSMovieInput';
+// import ValidasiMovie from './pages/ValidasiMovie';
+// import CMSMovie from './pages/CMSMovie';
+// import CMSMovieInput from './pages/CMSMovieInput';
 import SearchPage from './pages/SearchPage';
 
 const App = () => {
@@ -103,32 +103,32 @@ const App = () => {
                     }
                 />
                 {/* Rute untuk halaman cms movie */}
-                <Route
+                {/* <Route
                     path='/dramas'
                     element={
                         <>
                             <CMSMovie />
                         </>
                     }
-                />
+                /> */}
                 {/* Rute untuk halaman validasi movie */}
-                <Route
+                {/* <Route
                     path='/validate-movie'
                     element={
                         <>
                             <ValidasiMovie />
                         </>
                     }
-                />
+                /> */}
                 {/* Rute untuk halaman input movie */}
-                <Route
+                {/* <Route
                     path='/input-movie'
                     element={
                         <>
                             <CMSMovieInput />
                         </>
                     }
-                />
+                /> */}
             </Routes>
         </div>
     );
