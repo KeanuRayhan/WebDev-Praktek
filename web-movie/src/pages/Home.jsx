@@ -4,15 +4,15 @@ import Judul from "../components/Judul.jsx";
 import ListFilm from "../components/ListFIlm.jsx";
 // import 'flowbite/dist/flowbite.min.css';
 // import 'flowbite/dist/flowbite.min.js';
-import Sidebar from "../components/Sidebar.jsx";
+import SidebarHome from "../components/SidebarHome.jsx";
 
 const Home = () => {
     return (
-        <div className=" text-white">
+        <div className="bg-gray-900 text-white">
         <Header />
         
         <div className="flex min-h-screen">
-            <Sidebar />
+            <SidebarHome />
             <div className="flex-1 p-8">
             <div className="max-w-screen-lg mx-auto">
                 <Carousel />
