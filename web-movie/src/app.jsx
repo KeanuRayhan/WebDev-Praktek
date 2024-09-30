@@ -2,17 +2,13 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
-import Dramadetails from './components/Dramadetails';
-import ActorsList from './components/ActorsList';
-import TrailerSection from './components/TrailerSection';
-import ReviewsSection from './components/ReviewsSection';
-import AddReviewSection from './components/AddReviewSection';
 import LoginPage from './pages/LoginPage'; // Import LoginPage
 import RegistrationPage from './pages/RegistrationPage'; // Import RegistrationPage
 import CountriesPage from './pages/CMSCountries'; // Import CountriesPage
 import CommentsPage from './pages/CMSComments';
 import ActorsPage from './pages/CMSActors';
 import UsersPage from './pages/CMSUsers';
+import Home from './pages/Home';
 
 const App = () => {
     return (
@@ -86,17 +82,7 @@ const App = () => {
                         path="/*"
                         element={
                             <>
-                                <Header />
-                                <div className="flex">
-                                    <Sidebar />
-                                    <main className="flex-1 p-8">
-                                        <Dramadetails />
-                                        <ActorsList />
-                                        <TrailerSection />
-                                        <ReviewsSection />
-                                        <AddReviewSection />
-                                    </main>
-                                </div>
+                                <Home />
                             </>
                         }
                     />
