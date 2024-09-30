@@ -1,54 +1,71 @@
-import React from "react";
-import Filter from "../components/Filter"
+import React, { useEffect, useState } from "react";
 import ListDrama from "../components/ListDrama"
+import Header from "../components/Header";
+import SidebarHome from "../components/SidebarHome";
+import MovieDataService from "../services/movie.service";
+import { useLocation } from "react-router-dom";
+import DropdownFilter from "../components/DropdownFilter";
+
+function useQuery() {
+  return new URLSearchParams(useLocation().search);
+}
 
 function Searchpage() {
+  const [movies, setMovies] = useState([]);
+  const query = useQuery();
+  const searchTitle = query.get("title");
+
+  useEffect(() => {
+    if (searchTitle) {
+      findByTitle(searchTitle);
+    }
+  }, [searchTitle]);
+
+  const findByTitle = (title) => {
+    MovieDataService.findByTitle(title)
+      .then((response) => {
+        setMovies(response.data);
+        console.log(response.data);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
+
   return (
     <div className="bg-slate-950 text-white">
       {/* Header */}
-      <header className="bg-black text-yellow-500 p-4 flex items-center justify-between">
-        <h1 className="text-3xl font-bold">Dramaku</h1>
-        <div className="flex items-center space-x-2 w-full max-w-md">
-          <input
-            type="text"
-            placeholder="Search"
-            className="flex-1 p-2 rounded border bg-white-800 text-white"
-          />
-          <button className="bg-yellow-500 text-black font-bold py-2 px-4 rounded">
-            Search
-          </button>
-        </div>
-        <button className="bg-yellow-500 text-black font-bold py-2 px-4 rounded">
-          LOGIN
-        </button>
-      </header>
+      <Header />
 
       {/* Sidebar & Main Content */}
       <div className="flex min-h-screen">
         {/* Sidebar */}
-        <aside className="w-1/6 bg-black p-4 space-y-8">
-          <nav className="space-y-4">
-            <a href="#" className="block text-lg">Home</a>
-            <a href="#" className="block text-lg">Downloads</a>
-            <a href="#" className="block text-lg">Categories</a>
-            <a href="#" className="block text-lg">Trending</a>
-          </nav>
-        </aside>
+        <SidebarHome />
 
         {/* Main Content */}
         <main className="flex-1 p-8">
           {/* Filters and Sorting */}
-          <Filter/>
+          <DropdownFilter />
+          <h2>Search Results for "{searchTitle}"</h2>
           {/* List Drama */}
-          <ListDrama/>
-          <ListDrama/>
-          <ListDrama/>
-          <ListDrama/>
+          {movies.length > 0 ? (
+            movies.map((movie, index) => (
+              <ListDrama 
+                key={index}
+                title={movie.title}
+                url={movie.url_photo}
+                year={movie.year}
+                genres={movie.Genres.map(genre => genre.genre)}
+                actors={movie.Actors.map(actor => actor.actor_name)}
+              />
+            ))
+          ) : (
+            <p>No movies found</p>
+          )}
         </main>
       </div>
     </div>
   );
 }
-
 
 export default Searchpage;
