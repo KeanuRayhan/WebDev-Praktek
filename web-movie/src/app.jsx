@@ -2,11 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
-import Dramadetails from './components/Dramadetails';
-import ActorsList from './components/ActorsList';
-import TrailerSection from './components/TrailerSection';
-import ReviewsSection from './components/ReviewsSection';
-import AddReviewSection from './components/AddReviewSection';
+import PageDetails from './pages/PageDetails';
 import LoginPage from './pages/LoginPage'; // Import LoginPage
 import RegistrationPage from './pages/RegistrationPage'; // Import RegistrationPage
 import CountriesPage from './pages/CMSCountries'; // Import CountriesPage
@@ -99,6 +95,15 @@ const App = () => {
                     element={
                         <>
                             <SearchPage />
+                        </>
+                    }
+                />
+                {/* Rute untuj halaman detailspage*/}
+                <Route
+                    path="/details"
+                    element={
+                        <>
+                            <PageDetails />
                         </>
                     }
                 />

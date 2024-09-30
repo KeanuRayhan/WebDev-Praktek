@@ -1,30 +1,33 @@
 import Header from '../components/Header';
-import Sidebar from '../components/Sidebar';
 import TrailerSection from '../components/TrailerSection';
 import ActorsList from '../components/ActorsList';
 import ReviewsSection from '../components/ReviewsSection';
+import SidebarHome from '../components/SidebarHome';
+import Dramadetails from '../components/Dramadetails';
+import Synopsis from '../components/Synopsis';
 
-const Dramadetails = () => {
+const PageDetails = () => {
     return (
-        <div className="bg-black min-h-screen text-white">
+        <div className="bg-slate-900 min-h-screen text-white">
             {/* Header Section */}
             <Header />
             
             {/* Main Content with Sidebar */}
             <div className="flex">
                 {/* Sidebar */}
-                <Sidebar />
+                <SidebarHome />
 
                 {/* Main Content */}
                 <main className="w-5/6 p-4">
-                    {/* Movie Title and Summary */}
-                    <section className="mb-8">
-                        <h1 className="text-4xl font-bold mb-4">Movie Title</h1>
-                        <p className="text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque volutpat...</p>
-                    </section>
-
                     {/* Trailer Section */}
                     <TrailerSection />
+                    {/* Movie Details Section */}
+                    <section className="mb-8">
+                        <Dramadetails />
+                    </section>
+
+                    {/* Synopsis Section */}
+                    <Synopsis />
 
                     {/* Actors List Section */}
                     <section className="mt-12">
@@ -42,4 +45,4 @@ const Dramadetails = () => {
     );
 };
 
-export default Dramadetails;
+export default PageDetails;

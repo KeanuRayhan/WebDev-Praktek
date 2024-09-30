@@ -2,8 +2,7 @@ import React from 'react';
 
 const TrailerSection = () => {
     return (
-        <div className="w-3/4 mx-auto mt-8">
-            <h2 className="text-xl font-bold text-white">Watch Trailer</h2>
+        <div className="w-auto mx-auto mt-2">
             <div className="mt-4">
                 <iframe
                     width="100%"
