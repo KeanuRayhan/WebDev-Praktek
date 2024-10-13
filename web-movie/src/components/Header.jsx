@@ -2,18 +2,19 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 const Header = () => {
-  const [searchTitle, setSearchTitle] = useState("");
+
+  const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
 
   const handleSearchChange = (e) => {
-    const searchTitle = e.target.value;
-    setSearchTitle(searchTitle);
+    const searchTerm = e.target.value;
+    setSearchTerm(searchTerm);
   }
 
   const handleSearchSubmit = (e) => {
     e.preventDefault();
-    if (searchTitle.trim()){
-      navigate(`/search?title=${searchTitle}`);
+    if (searchTerm.trim()){
+      navigate(`/search?query=${searchTerm}`);
     }
   }
 
@@ -24,7 +25,7 @@ const Header = () => {
         <input
           type="text"
           placeholder="Search"
-          value={searchTitle}
+          value={searchTerm}
           onChange={handleSearchChange}
           className="flex-1 p-2 rounded border bg-white-800 text-black"
         />
