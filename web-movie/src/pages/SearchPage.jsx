@@ -13,16 +13,16 @@ function useQuery() {
 function Searchpage() {
   const [movies, setMovies] = useState([]);
   const query = useQuery();
-  const searchTitle = query.get("title");
+  const searchQuery = query.get("query");
 
   useEffect(() => {
-    if (searchTitle) {
-      findByTitle(searchTitle);
+    if (searchQuery) {
+      findByQuery(searchQuery);
     }
-  }, [searchTitle]);
+  }, [searchQuery]);
 
-  const findByTitle = (title) => {
-    MovieDataService.findByTitle(title)
+  const findByQuery = (searchTerm) => {
+    MovieDataService.findByQuery(searchTerm)
       .then((response) => {
         setMovies(response.data);
         console.log(response.data);
@@ -46,7 +46,9 @@ function Searchpage() {
         <main className="flex-1 p-8">
           {/* Filters and Sorting */}
           <DropdownFilter />
-          <h2>Search Results for "{searchTitle}"</h2>
+          <h2>
+            Search Results for "{searchQuery}"
+          </h2>
           {/* List Drama */}
           {movies.length > 0 ? (
             movies.map((movie, index) => (
@@ -57,6 +59,7 @@ function Searchpage() {
                 year={movie.year}
                 genres={movie.Genres.map(genre => genre.genre)}
                 actors={movie.Actors.map(actor => actor.actor_name)}
+                id={movie.movie_id}
               />
             ))
           ) : (
