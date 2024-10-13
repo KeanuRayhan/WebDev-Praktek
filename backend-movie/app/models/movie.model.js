@@ -19,6 +19,10 @@ module.exports = (sequelize, DataTypes) => {
       link_trailer: {
         type: DataTypes.STRING
       },
+      status: {
+        type: DataTypes.ENUM('approved', 'unapproved'),
+        allowNull: false,
+      },
     }, {
       freezeTableName: true,
       timestamps: false
