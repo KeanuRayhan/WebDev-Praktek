@@ -2,7 +2,6 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
-import PageDetails from './pages/PageDetails';
 import LoginPage from './pages/LoginPage'; // Import LoginPage
 import RegistrationPage from './pages/RegistrationPage'; // Import RegistrationPage
 import CountriesPage from './pages/CMSCountries'; // Import CountriesPage
@@ -10,10 +9,11 @@ import CommentsPage from './pages/CMSComments';
 import ActorsPage from './pages/CMSActors';
 import UsersPage from './pages/CMSUsers';
 import Home from './pages/Home';
-// import ValidasiMovie from './pages/ValidasiMovie';
-// import CMSMovie from './pages/CMSMovie';
-// import CMSMovieInput from './pages/CMSMovieInput';
+import ValidasiMovie from './pages/ValidasiMovie';
+import CMSMovie from './pages/CMSMovie';
+import CMSMovieInput from './pages/CMSMovieInput';
 import SearchPage from './pages/SearchPage';
+import PageDetails from './pages/PageDetails';
 
 const App = () => {
     return (
@@ -98,9 +98,8 @@ const App = () => {
                         </>
                     }
                 />
-                {/* Rute untuj halaman detailspage*/}
                 <Route
-                    path="/details"
+                    path='/movies/:id'
                     element={
                         <>
                             <PageDetails />
@@ -140,4 +139,3 @@ const App = () => {
 };
 
 export default App;
-
