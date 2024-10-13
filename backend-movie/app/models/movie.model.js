@@ -16,6 +16,9 @@ module.exports = (sequelize, DataTypes) => {
       synopsis: {
         type: DataTypes.STRING
       },
+      link_trailer: {
+        type: DataTypes.STRING
+      },
     }, {
       freezeTableName: true,
       timestamps: false
