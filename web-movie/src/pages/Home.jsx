@@ -6,37 +6,24 @@ import DramaCard from '../components/MovieCard';
 import MovieCard from '../components/MovieCard';
 import MovieDataService from "../services/movie.service";
 import React, { useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
-  // const dramas = [
-  //   {
-  //     title: 'Title of the drama 1 that makes two lines',
-  //     year: 2024,
-  //     genres: ['Genre 1', 'Genre 2', 'Genre 3'],
-  //     rating: 3.5,
-  //     views: 19,
-  //   },
-  //   // Repeat drama objects as needed
-  // ];
-
   const [movies, setMovies] = useState([]);
+  const [filteredMovies, setFilteredMovies] = useState([]);
   const [currentMovie, setCurrentMovie] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(-1);
-  const [searchTitle, setSearchTitle] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     retrieveMovies();
   }, []);
 
-  const onChangeSearchTitle = e => {
-    const searchTitle = e.target.value;
-    setSearchTitle(searchTitle);
-  };
-
   const retrieveMovies = () => {
     MovieDataService.getAll()
       .then(response => {
         setMovies(response.data);
+        setFilteredMovies(response.data);
         console.log(response.data);
       })
       .catch(e => {
@@ -55,16 +42,20 @@ const Home = () => {
     setCurrentIndex(index);
   };
 
-  const findByTitle = () => {
-    MovieDataService.findByTitle(searchTitle)
-      .then(response => {
-        setMovies(response.data);
-        console.log(response.data);
-      })
-      .catch(e => {
-        console.log(e);
-      });
+  const handleMovieClick = (id) => {
+    navigate(`/movies/${id}`);
   };
+
+  const handleFilterChange = (genre_id) => {
+    if (genre_id) {
+      const filtered = movies.filter(movie => 
+        movie.Genres.some(genre => genre.genre_id === parseInt(genre_id))
+      );
+      setFilteredMovies(filtered);
+    } else {
+      setFilteredMovies(movies);
+    }
+  }
 
   return (
     <div className="bg-gray-900 text-white min-h-screen">
@@ -74,16 +65,16 @@ const Home = () => {
         <main className="flex-1 p-8">
           <Carousel />
           <h1 className="text-2xl font-bold mb-4 text-white">List Film</h1>
-          <DropdownFilter />
+          <DropdownFilter onFilterChange={handleFilterChange} />
           <div className="grid grid-cols-5 gap-4">
-            {movies && movies.map((movie, index) => (
+            {filteredMovies && filteredMovies.map((movie, index) => (
               <MovieCard 
                 key={index}
                 title={movie.title}
                 url={movie.url_photo}
                 year={movie.year}
                 genres={movie.Genres.map(genre => genre.genre)}
-                onClick={() => setActiveMovie(movie, index)} 
+                id={movie.movie_id}
               />
             ))}
           </div>
