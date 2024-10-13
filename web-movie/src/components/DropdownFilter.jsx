@@ -4,6 +4,9 @@ const DropdownFilter = ({ onFilterChange }) => {
   const [genres, setGenres] = useState([]);
   const [selectedGenre, setSelectedGenre] = useState('');
 
+  const [platforms, setPlatforms] = useState([]);
+  const [selectedPlatform, setSelectedPlatform] = useState('');
+
   useEffect(() => {
     const fetchGenres = async () => {
       try {
@@ -15,28 +18,34 @@ const DropdownFilter = ({ onFilterChange }) => {
       }
     };
 
+    const fetchPlatforms = async () => {
+      try {
+        const response = await fetch('http://localhost:8080/api/platforms');
+        const data = await response.json();
+        setPlatforms(data);
+      } catch (error) {
+        console.error('Error fetching platforms: ', error);
+      }
+    }
+
     fetchGenres();
+    fetchPlatforms();
   }, []);
 
   const handleGenreChange = (event) => {
     setSelectedGenre(event.target.value);
-    onFilterChange(event.target.value);
+    onFilterChange({ genre_id: event.target.value, platform_id: selectedPlatform });
+  }
+
+  const handlePlatformChange = (event) => {
+    setSelectedPlatform(event.target.value);
+    onFilterChange({ genre_id: selectedGenre, platform_id: event.target.value });
   }
 
   return (
     <div className="flex justify-between items-center mb-4">
       <div className="flex space-x-4">
         {/* Year */}
-        <select 
-          className="border rounded-lg p-2 bg-gray-700"
-          value={selectedGenre}
-          onChange={handleGenreChange}
-        >
-          <option value="">Select Genre</option> {/* Pilihan default */}
-          {genres.map((genre) => (
-            <option key={genre.genre_id} value={genre.genre_id}>{genre.genre}</option> // Menampilkan nama genre
-          ))}
-        </select>
 
         {/* Genre */}
         <select 
@@ -51,40 +60,21 @@ const DropdownFilter = ({ onFilterChange }) => {
         </select>
 
         {/* Status */}
-        <select 
-          className="border rounded-lg p-2 bg-gray-700"
-          value={selectedGenre}
-          onChange={handleGenreChange}
-        >
-          <option value="">Select Genre</option> {/* Pilihan default */}
-          {genres.map((genre) => (
-            <option key={genre.genre_id} value={genre.genre_id}>{genre.genre}</option> // Menampilkan nama genre
-          ))}
-        </select>
 
         {/* Availability */}
         <select 
           className="border rounded-lg p-2 bg-gray-700"
-          value={selectedGenre}
-          onChange={handleGenreChange}
+          value={selectedPlatform}
+          onChange={handlePlatformChange}
         >
-          <option value="">Select Genre</option> {/* Pilihan default */}
-          {genres.map((genre) => (
-            <option key={genre.genre_id} value={genre.genre_id}>{genre.genre}</option> // Menampilkan nama genre
+          <option value="">Availability</option> {/* Pilihan default */}
+          {platforms.map((platform) => (
+            <option key={platform.platform_id} value={platform.platform_id}>{platform.platform}</option> // Menampilkan nama platform
           ))}
         </select>
 
         {/* Award */}
-        <select 
-          className="border rounded-lg p-2 bg-gray-700"
-          value={selectedGenre}
-          onChange={handleGenreChange}
-        >
-          <option value="">Select Genre</option> {/* Pilihan default */}
-          {genres.map((genre) => (
-            <option key={genre.genre_id} value={genre.genre_id}>{genre.genre}</option> // Menampilkan nama genre
-          ))}
-        </select>
+        
 
         {/* {['Year', 'Genre', 'Status', 'Availability', 'Award'].map((filter, idx) => (
           <select key={idx} className="border rounded-lg p-2 bg-gray-700">
