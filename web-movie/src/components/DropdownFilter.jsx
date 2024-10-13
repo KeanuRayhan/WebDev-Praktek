@@ -7,6 +7,12 @@ const DropdownFilter = ({ onFilterChange }) => {
   const [platforms, setPlatforms] = useState([]);
   const [selectedPlatform, setSelectedPlatform] = useState('');
 
+  const [statuses] = useState([
+    { id: 'approved', name: 'Approved' }, 
+    { id: 'unapproved', name: 'Unapproved' },
+  ]);
+  const [selectedStatus, setSelectedStatus] = useState('');
+
   useEffect(() => {
     const fetchGenres = async () => {
       try {
@@ -34,12 +40,17 @@ const DropdownFilter = ({ onFilterChange }) => {
 
   const handleGenreChange = (event) => {
     setSelectedGenre(event.target.value);
-    onFilterChange({ genre_id: event.target.value, platform_id: selectedPlatform });
+    onFilterChange({ genre_id: event.target.value, platform_id: selectedPlatform, status: selectedStatus });
   }
 
   const handlePlatformChange = (event) => {
     setSelectedPlatform(event.target.value);
-    onFilterChange({ genre_id: selectedGenre, platform_id: event.target.value });
+    onFilterChange({ genre_id: selectedGenre, platform_id: event.target.value, status: selectedStatus });
+  }
+
+  const handleStatusChange = (event) => {
+    setSelectedStatus(event.target.value);
+    onFilterChange({ genre_id: selectedGenre, platform_id: selectedPlatform, status: event.target.value });
   }
 
   return (
@@ -60,6 +71,16 @@ const DropdownFilter = ({ onFilterChange }) => {
         </select>
 
         {/* Status */}
+        <select
+          className='border rounded-lg p-2 bg-gray-700'
+          value={selectedStatus}
+          onChange={handleStatusChange}
+        >
+          <option value="">Status</option>
+          {statuses.map((status) => (
+            <option key={status.id} value={status.id}>{status.name}</option>
+          ))}
+        </select>
 
         {/* Availability */}
         <select 
