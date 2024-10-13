@@ -33,6 +33,12 @@ exports.findAll = (req, res) => {
                     attributes: [],
                 },
             },
+            {
+                model: Platform,
+                through: {
+                    attributes: [],
+                },
+            },
         ]
     })
     .then(movies => {
