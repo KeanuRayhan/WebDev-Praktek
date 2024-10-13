@@ -3,11 +3,15 @@ import http from "../http-common";
 class MovieDataService {
     getAll() {
         return http.get("/movies");
-    }
+    };
 
-    findByTitle(title) {
-        return http.get(`/movies?title=${title}`);
-    }
+    findByQuery(query) {
+        return http.get(`/movies?query=${query}`);
+    };
+
+    get(id) {
+        return http.get(`/movies/${id}`);
+    };
 }
 
 export default new MovieDataService();
