@@ -46,16 +46,55 @@ const Home = () => {
     navigate(`/movies/${id}`);
   };
 
-  const handleFilterChange = (genre_id) => {
+  // const handleFilterChange = ({ genre_id, platform_id }) => {
+  //   let filtered = movies;
+    
+  //   if (genre_id) {
+  //     filtered = filtered.filter(movie => 
+  //       movie.Genres.some(genre => genre.genre_id === parseInt(genre_id))
+  //     );
+  //     setFilteredMovies(filtered);
+  //   } else {
+  //     setFilteredMovies(movies);
+  //   }
+  // };
+
+  // const handleFilterChange = ({ genre_id, platform_id }) => {
+  //   let filtered = movies;
+
+  //   if (genre_id) {
+  //     filtered = filtered.filter(movie => 
+  //       movie.Genres.some(genre => genre.genre_id === parseInt(genre_id))
+  //     );
+  //   }
+
+  //   if (platform_id) {
+  //     filtered = filtered.filter(movie => movie.platform_id === parseInt(platform_id));
+  //   }
+
+  //   setFilteredMovies(filtered);
+  // };
+
+  const handleFilterChange = ({ genre_id, platform_id }) => {
+    let filtered = movies; // Mulai dengan semua film
+  
+    // Filter berdasarkan platform
+    if (platform_id) {
+      filtered = filtered.filter(movie => 
+          movie.Platforms && movie.Platforms.some(platform => platform.platform_id === parseInt(platform_id))
+      );
+    }
+  
+    // Filter berdasarkan genre
     if (genre_id) {
-      const filtered = movies.filter(movie => 
+      filtered = filtered.filter(movie =>
         movie.Genres.some(genre => genre.genre_id === parseInt(genre_id))
       );
-      setFilteredMovies(filtered);
-    } else {
-      setFilteredMovies(movies);
     }
-  }
+  
+    // Update state untuk menampilkan hasil
+    setFilteredMovies(filtered);
+  };  
 
   return (
     <div className="bg-gray-900 text-white min-h-screen">
