@@ -1,31 +1,31 @@
 import React from 'react';
 
-const Dramadetails = () => {
+const Dramadetails = ({ poster, title, year, genres, availability }) => {
     return (
         <div className="mt-8 flex space-x-8">
             <img
-                src="poster.png"
+                src={poster}
                 alt="Poster Drama"
                 className="w-[200px] h-[300px] rounded bg-gray-700 object-cover"
             />
             <div className="space-y-4">
                 <h1 className="text-3xl font-bold text-white">
-                    Title of the Drama That Makes Two Lines
+                    {title}
                 </h1>
-                <p>
+                {/* <p>
                     <strong>Other titles:</strong> Title 2, Title 3, Title 4
+                </p> */}
+                <p>
+                    <strong>Year:</strong> {year}
                 </p>
                 <p>
-                    <strong>Year:</strong> 2024
-                </p>
-                <p>
-                    <strong>Genres:</strong> Genre 1, Genre 2, Genre 3
+                    <strong>Genres:</strong> {genres.join(', ')}
                 </p>
                 <p>
                     <strong>Rating:</strong> 9.8
                 </p>
                 <p>
-                    <strong>Availability:</strong> Available @website.on.XYZ
+                    <strong>Availability:</strong> {availability.join(', ')}
                 </p>
 
                 {/* Bookmark Button below availability */}
