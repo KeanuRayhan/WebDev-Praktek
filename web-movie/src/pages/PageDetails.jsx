@@ -1,3 +1,5 @@
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import Header from '../components/Header';
 import TrailerSection from '../components/TrailerSection';
 import ActorsList from '../components/ActorsList';
@@ -5,8 +7,23 @@ import ReviewsSection from '../components/ReviewsSection';
 import SidebarHome from '../components/SidebarHome';
 import Dramadetails from '../components/Dramadetails';
 import Synopsis from '../components/Synopsis';
+import MovieDataService from '../services/movie.service';
 
 const PageDetails = () => {
+    const { id } = useParams();
+    const [movie, setMovie] = useState(null);
+
+    useEffect(() => {
+        MovieDataService.get(id)
+            .then((response) => {
+                setMovie(response.data);
+                console.log(response.data);
+            })
+            .catch((e) => {
+                console.log(e);
+            });
+    }, [id]);
+
     return (
         <div className="bg-slate-900 min-h-screen text-white">
             {/* Header Section */}
@@ -19,26 +36,40 @@ const PageDetails = () => {
 
                 {/* Main Content */}
                 <main className="w-5/6 p-4">
-                    {/* Trailer Section */}
-                    <TrailerSection />
-                    {/* Movie Details Section */}
-                    <section className="mb-8">
-                        <Dramadetails />
-                    </section>
+                    {movie ? (
+                        <> 
+                            {/* Trailer Section */}
+                            <TrailerSection videoUrl={movie.link_trailer}/>
+                            {/* Movie Details Section */}
+                            <section className="mb-8">
+                                <Dramadetails 
+                                    poster={movie.url_photo}
+                                    title={movie.title}
+                                    year={movie.year}
+                                    genres={movie.Genres.map((genre) => genre.genre)}
+                                    availability={movie.Platforms.map((platform) => platform.platform)}
+                                />
+                            </section>
 
-                    {/* Synopsis Section */}
-                    <Synopsis />
+                            {/* Synopsis Section */}
+                            <Synopsis 
+                                synopsis={movie.synopsis}
+                            />
 
-                    {/* Actors List Section */}
-                    <section className="mt-12">
-                        <h2 className="text-xl font-bold text-white">Cast</h2>
-                        <ActorsList />
-                    </section>
+                            {/* Actors List Section */}
+                            <section className="mt-12">
+                                <h2 className="text-xl font-bold text-white">Cast</h2>
+                                <ActorsList actors={movie.Actors}/>
+                            </section>
 
-                    {/* Reviews Section */}
-                    <section className="mt-12">
-                        <ReviewsSection />
-                    </section>
+                            {/* Reviews Section */}
+                            <section className="mt-12">
+                                <ReviewsSection reviews={movie.reviews}/>
+                            </section>
+                        </>
+                    ) : (
+                        <p>Loading...</p>
+                    )}
                 </main>
             </div>
         </div>
