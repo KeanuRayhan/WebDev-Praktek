@@ -4,10 +4,19 @@ const Movie = db.movie;
 const Genre = db.genre;
 const Actor = db.actor;
 const Op = db.Sequelize.Op;
+const Review = db.review;
+const User = db.user;
+const Platform = db.platform;
 
 exports.findAll = (req, res) => {
-    const title = req.query.title;
-    var condition = title ? { title: { [Op.iLike]: `%${title}%` } } : null;
+    const query = req.query.query;
+
+    var condition = query ? {
+        [Op.or]: [
+            { title: { [Op.iLike]: `%${query}%` } },
+            { '$Actors.actor_name$': { [Op.iLike]: `%${query}%` } } // Pencarian berdasarkan nama aktor
+        ]
+    } : null;
 
     Movie.findAll({
         where: condition,
@@ -25,6 +34,30 @@ exports.findAll = (req, res) => {
                 },
             },
         ]
+    })
+    .then(movies => {
+        if (condition) {
+            const movieIds = movies.map(movie => movie.movie_id);
+
+            return Movie.findAll({
+                where: { movie_id: movieIds },
+                include: [
+                    {
+                        model: Genre,
+                        through: {
+                            attributes: [],
+                        },
+                    },
+                    {
+                        model: Actor,
+                        through: {
+                            attributes: [],
+                        },
+                    },
+                ],
+            });
+        }
+        return movies;
     })
     .then(data => {
         console.log(JSON.stringify(data, null, 2));
@@ -55,6 +88,23 @@ exports.findOne = (req, res) => {
                 through: {
                     attributes: [],
                 },
+            },
+            {
+                model: Platform,
+                through: {
+                    attributes: [],
+                },
+            },
+            {
+                model: Review,
+                as: "reviews",
+                include: [
+                    {
+                        model: User,
+                        as: "user",
+                        attributes: ["username"],
+                    }
+                ]
             },
         ]
     })
