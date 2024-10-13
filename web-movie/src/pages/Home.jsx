@@ -75,7 +75,7 @@ const Home = () => {
   //   setFilteredMovies(filtered);
   // };
 
-  const handleFilterChange = ({ genre_id, platform_id }) => {
+  const handleFilterChange = ({ genre_id, platform_id, status }) => {
     let filtered = movies; // Mulai dengan semua film
   
     // Filter berdasarkan platform
@@ -90,6 +90,11 @@ const Home = () => {
       filtered = filtered.filter(movie =>
         movie.Genres.some(genre => genre.genre_id === parseInt(genre_id))
       );
+    }
+
+    // Filter berdasarkan status
+    if (status) {
+      filtered = filtered.filter(movie => movie.status === status);
     }
   
     // Update state untuk menampilkan hasil
