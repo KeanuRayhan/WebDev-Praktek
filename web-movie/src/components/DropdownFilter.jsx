@@ -7,6 +7,9 @@ const DropdownFilter = ({ onFilterChange }) => {
   const [platforms, setPlatforms] = useState([]);
   const [selectedPlatform, setSelectedPlatform] = useState('');
 
+  const [countries, setCountries] = useState([]);
+  const [selectedCountry, setSelectedCountry] = useState('');
+
   const [statuses] = useState([
     { id: 'approved', name: 'Approved' }, 
     { id: 'unapproved', name: 'Unapproved' },
@@ -34,23 +37,39 @@ const DropdownFilter = ({ onFilterChange }) => {
       }
     }
 
+    const fetchCountries = async () => {
+      try {
+        const response = await fetch('http://localhost:8080/api/countries');
+        const data = await response.json();
+        setCountries(data);
+      } catch (error) {
+        console.error('Error fetching countries: ', error);
+      }
+    }
+
     fetchGenres();
     fetchPlatforms();
+    fetchCountries();
   }, []);
 
   const handleGenreChange = (event) => {
     setSelectedGenre(event.target.value);
-    onFilterChange({ genre_id: event.target.value, platform_id: selectedPlatform, status: selectedStatus });
+    onFilterChange({ genre_id: event.target.value, platform_id: selectedPlatform, status: selectedStatus, country_id: selectedCountry });
   }
 
   const handlePlatformChange = (event) => {
     setSelectedPlatform(event.target.value);
-    onFilterChange({ genre_id: selectedGenre, platform_id: event.target.value, status: selectedStatus });
+    onFilterChange({ genre_id: selectedGenre, platform_id: event.target.value, status: selectedStatus, country_id: selectedCountry });
   }
 
   const handleStatusChange = (event) => {
     setSelectedStatus(event.target.value);
-    onFilterChange({ genre_id: selectedGenre, platform_id: selectedPlatform, status: event.target.value });
+    onFilterChange({ genre_id: selectedGenre, platform_id: selectedPlatform, status: event.target.value, country_id: selectedCountry });
+  }
+
+  const handleCountryChange = (event) => {
+    setSelectedCountry(event.target.value);
+    onFilterChange({ genre_id: selectedGenre, platform_id: selectedPlatform, status: selectedStatus, country_id: event.target.value });
   }
 
   return (
@@ -94,6 +113,18 @@ const DropdownFilter = ({ onFilterChange }) => {
           ))}
         </select>
 
+        {/* Country */}
+        <select 
+          className="border rounded-lg p-2 bg-gray-700"
+          value={selectedCountry}
+          onChange={handleCountryChange}
+        >
+          <option value="">Country</option> {/* Pilihan default */}
+          {countries.map((country) => (
+            <option key={country.country_id} value={country.country_id}>{country.country_name}</option> // Menampilkan nama country
+          ))}
+        </select>
+
         {/* Award */}
         
 
@@ -103,12 +134,12 @@ const DropdownFilter = ({ onFilterChange }) => {
           </select>
         ))} */}
       </div>
-      <button className="px-4 py-2 bg-yellow-500 text-black font-bold rounded hover:bg-yellow-600">
+      {/* <button className="px-4 py-2 bg-yellow-500 text-black font-bold rounded hover:bg-yellow-600">
         Submit
       </button>
       <select className="border rounded-lg p-2 bg-gray-700">
         <option>Alphabetics</option>
-      </select>
+      </select> */}
     </div>
   );
 };
