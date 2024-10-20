@@ -14,6 +14,7 @@ import CMSMovie from './pages/CMSMovie';
 import CMSMovieInput from './pages/CMSMovieInput';
 import SearchPage from './pages/SearchPage';
 import PageDetails from './pages/PageDetails';
+import ProtectedRoute from './components/ProtectedRoute';
 
 const App = () => {
     return (
@@ -22,65 +23,7 @@ const App = () => {
                 {/* Rute hanya untuk halaman login */}
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/register" element={<RegistrationPage />} />
-                <Route
-                    path="/countries"
-                    element={
-                        <>
-                            <Header />
-                            <div className="flex">
-                                <Sidebar />
-                                <main className="flex-1 p-8">
-                                    <CountriesPage />
-                                </main>
-                            </div>
-                        </>
-                    }
-                />
-                {/* Rute untuk halaman comments */}
-                <Route
-                    path="/comments"
-                    element={
-                        <>
-                            <Header />
-                            <div className="flex">
-                                <Sidebar />
-                                <main className="flex-1 p-8">
-                                    <CommentsPage />
-                                </main>
-                            </div>
-                        </>
-                    }
-                />
-                {/* Rute untuk halaman actors */}
-                <Route
-                    path="/actors"
-                    element={
-                        <>
-                            <Header />
-                            <div className="flex">
-                                <Sidebar />
-                                <main className="flex-1 p-8">
-                                    <ActorsPage />
-                                </main>
-                            </div>
-                        </>
-                    }
-                />
-                {/* Rute untuk halaman users */}
-                <Route
-                    path="/users"
-                    element={
-                        <>
-                            <Header />
-                            <div className="flex">
-                                <Sidebar />
-                                <main className="flex-1 p-8">
-                                    <UsersPage />
-                                </main>
-                            </div>
-                        </>
-                    }
-                />
+
                 {/* Rute untuk halaman utama dan lainnya */}
                 <Route
                     path="/*"
@@ -106,24 +49,86 @@ const App = () => {
                         </>
                     }
                 />
-                {/* Rute untuk halaman cms movie */}
-                {/* <Route
+
+                {/* CMS */}
+                {/* Rute untuk halaman CMS countries */}
+                <Route
+                    path="/countries"
+                    element={
+                        <ProtectedRoute roleRequired="admin">
+                            <Header />
+                            <div className="flex">
+                                <Sidebar />
+                                <main className="flex-1 p-8">
+                                    <CountriesPage />
+                                </main>
+                            </div>
+                        </ProtectedRoute>
+                    }
+                />
+                {/* Rute untuk halaman CMS comments */}
+                <Route
+                    path="/comments"
+                    element={
+                        <ProtectedRoute roleRequired="admin">
+                            <Header />
+                            <div className="flex">
+                                <Sidebar />
+                                <main className="flex-1 p-8">
+                                    <CommentsPage />
+                                </main>
+                            </div>
+                        </ProtectedRoute>
+                    }
+                />
+                {/* Rute untuk halaman CMS actors */}
+                <Route
+                    path="/actors"
+                    element={
+                        <ProtectedRoute roleRequired="admin">
+                            <Header />
+                            <div className="flex">
+                                <Sidebar />
+                                <main className="flex-1 p-8">
+                                    <ActorsPage />
+                                </main>
+                            </div>
+                        </ProtectedRoute>
+                    }
+                />
+                {/* Rute untuk halaman CMS users */}
+                <Route
+                    path="/users"
+                    element={
+                        <ProtectedRoute roleRequired="admin">
+                            <Header />
+                            <div className="flex">
+                                <Sidebar />
+                                <main className="flex-1 p-8">
+                                    <UsersPage />
+                                </main>
+                            </div>
+                        </ProtectedRoute>
+                    }
+                />
+                {/* Rute untuk halaman CMS movie */}
+                <Route
                     path='/dramas'
                     element={
-                        <>
+                        <ProtectedRoute roleRequired="admin">
                             <CMSMovie />
-                        </>
+                        </ProtectedRoute>
                     }
-                /> */}
+                />
                 {/* Rute untuk halaman validasi movie */}
-                {/* <Route
+                <Route
                     path='/validate-movie'
                     element={
-                        <>
+                        <ProtectedRoute roleRequired="admin">
                             <ValidasiMovie />
-                        </>
+                        </ProtectedRoute>
                     }
-                /> */}
+                />
                 {/* Rute untuk halaman input movie */}
                 {/* <Route
                     path='/input-movie'
