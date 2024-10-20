@@ -26,6 +26,7 @@ db.actor = require("./actor.model.js")(sequelize, Sequelize);
 db.review = require("./review.model.js")(sequelize, Sequelize);
 db.user = require("./user.model.js")(sequelize, Sequelize);
 db.platform = require("./platform.model.js")(sequelize, Sequelize);
+db.country = require("./country.model.js")(sequelize, Sequelize);
 
 // RELATIONSHIPS BETWEEN MOVIE AND GENRE
 db.genre.belongsToMany(db.movie, {
@@ -81,5 +82,16 @@ db.review.belongsTo(db.user, {
   foreignKey: "user_id",
   as: "user",
 });
+
+// RELATIONSHIPS BETWEEN MOVIE AND COUNTRY
+db.country.hasMany(db.movie, {
+  foreignKey: "country_id",
+  as: "movie",
+});
+
+db.movie.belongsTo(db.country, {
+  foreignKey: "country_id",
+  as: "country",
+})
 
 module.exports = db;
