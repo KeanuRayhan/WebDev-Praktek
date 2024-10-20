@@ -8,7 +8,7 @@ var bcrypt = require("bcryptjs");
 // Fungsi signup
 exports.signup = (req, res) => {
   // Menentukan role default sebagai 'USER'
-  const userRole = req.body.role || 'USER';
+  const userRole = req.body.role || 'user';
 
   // Save User to Database
   User.create({
@@ -27,6 +27,7 @@ exports.signup = (req, res) => {
 
 // Fungsi signin
 exports.signin = (req, res) => {
+  console.log("Request body:", req.body); // Log request body
   User.findOne({
     where: {
       username: req.body.username
@@ -49,12 +50,12 @@ exports.signin = (req, res) => {
         });
       }
 
-      const token = jwt.sign({ id: user.id, role: user.role }, config.secret, {
+      const token = jwt.sign({ id: user.user_id, role: user.role }, config.secret, {
         expiresIn: 86400 // 24 hours
       });
 
       res.status(200).send({
-        id: user.id,
+        id: user.user_id,
         username: user.username,
         email: user.email,
         role: user.role,  // Mengembalikan role pengguna
