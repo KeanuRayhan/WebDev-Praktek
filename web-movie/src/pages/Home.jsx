@@ -46,36 +46,7 @@ const Home = () => {
     navigate(`/movies/${id}`);
   };
 
-  // const handleFilterChange = ({ genre_id, platform_id }) => {
-  //   let filtered = movies;
-    
-  //   if (genre_id) {
-  //     filtered = filtered.filter(movie => 
-  //       movie.Genres.some(genre => genre.genre_id === parseInt(genre_id))
-  //     );
-  //     setFilteredMovies(filtered);
-  //   } else {
-  //     setFilteredMovies(movies);
-  //   }
-  // };
-
-  // const handleFilterChange = ({ genre_id, platform_id }) => {
-  //   let filtered = movies;
-
-  //   if (genre_id) {
-  //     filtered = filtered.filter(movie => 
-  //       movie.Genres.some(genre => genre.genre_id === parseInt(genre_id))
-  //     );
-  //   }
-
-  //   if (platform_id) {
-  //     filtered = filtered.filter(movie => movie.platform_id === parseInt(platform_id));
-  //   }
-
-  //   setFilteredMovies(filtered);
-  // };
-
-  const handleFilterChange = ({ genre_id, platform_id, status }) => {
+  const handleFilterChange = ({ genre_id, platform_id, status, country_id }) => {
     let filtered = movies; // Mulai dengan semua film
   
     // Filter berdasarkan platform
@@ -96,6 +67,11 @@ const Home = () => {
     if (status) {
       filtered = filtered.filter(movie => movie.status === status);
     }
+
+    // Filter berdasarkan country
+    if (country_id) {
+      filtered = filtered.filter(movie => movie.country_id === parseInt(country_id));
+    }
   
     // Update state untuk menampilkan hasil
     setFilteredMovies(filtered);
@@ -106,7 +82,7 @@ const Home = () => {
       <Header />
       <div className="flex">
         <SidebarHome />
-        <main className="flex-1 p-8">
+        <main className="flex-1 p-8 ml-[16.67%]">
           <Carousel />
           <h1 className="text-2xl font-bold mb-4 text-white">List Film</h1>
           <DropdownFilter onFilterChange={handleFilterChange} />
