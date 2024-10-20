@@ -14,6 +14,7 @@ function Searchpage() {
   const [movies, setMovies] = useState([]);
   const query = useQuery();
   const searchQuery = query.get("query");
+  const [filteredMovies, setFilteredMovies] = useState([]);
 
   useEffect(() => {
     if (searchQuery) {
@@ -25,11 +26,43 @@ function Searchpage() {
     MovieDataService.findByQuery(searchTerm)
       .then((response) => {
         setMovies(response.data);
+        setFilteredMovies(response.data);
         console.log(response.data);
       })
       .catch((e) => {
         console.log(e);
       });
+  };
+
+  const handleFilterChange = ({ genre_id, platform_id, status, country_id }) => {
+    let filtered = movies; // Mulai dengan semua film
+  
+    // Filter berdasarkan platform
+    if (platform_id) {
+      filtered = filtered.filter(movie => 
+          movie.Platforms && movie.Platforms.some(platform => platform.platform_id === parseInt(platform_id))
+      );
+    }
+  
+    // Filter berdasarkan genre
+    if (genre_id) {
+      filtered = filtered.filter(movie =>
+        movie.Genres.some(genre => genre.genre_id === parseInt(genre_id))
+      );
+    }
+
+    // Filter berdasarkan status
+    if (status) {
+      filtered = filtered.filter(movie => movie.status === status);
+    }
+
+    // Filter berdasarkan country
+    if (country_id) {
+      filtered = filtered.filter(movie => movie.country_id === parseInt(country_id));
+    }
+  
+    // Update state untuk menampilkan hasil
+    setFilteredMovies(filtered);
   };
 
   return (
@@ -43,15 +76,15 @@ function Searchpage() {
         <SidebarHome />
 
         {/* Main Content */}
-        <main className="flex-1 p-8">
+        <main className="flex-1 p-8 ml-[16.67%]">
           {/* Filters and Sorting */}
-          <DropdownFilter />
+          <DropdownFilter onFilterChange={handleFilterChange} />
           <h2>
             Search Results for "{searchQuery}"
           </h2>
           {/* List Drama */}
-          {movies.length > 0 ? (
-            movies.map((movie, index) => (
+          {filteredMovies.length > 0 ? (
+            filteredMovies.map((movie, index) => (
               <ListDrama 
                 key={index}
                 title={movie.title}
