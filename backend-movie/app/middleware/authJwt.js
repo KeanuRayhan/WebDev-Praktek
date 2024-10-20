@@ -25,17 +25,23 @@ verifyToken = (req, res, next) => {
 
 isAdmin = (req, res, next) => {
   User.findByPk(req.userId).then(user => {
-    user.getRoles().then(roles => {
-      for (let i = 0; i < roles.length; i++) {
-        if (roles[i].name === "admin") {
-          next();
-          return;
-        }
-      }
+    if (!user) {
+      return res.status(404).send({
+        message: "User not found."
+      });
+    }
 
-      res.status(403).send({
+    // Cek langsung nilai role dari user
+    if (user.role === 'admin') {
+      next(); // Jika role adalah admin, lanjutkan ke middleware berikutnya
+    } else {
+      return res.status(403).send({
         message: "Require Admin Role!"
       });
+    }
+  }).catch(err => {
+    return res.status(500).send({
+      message: "Unable to validate user role."
     });
   });
 };
