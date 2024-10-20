@@ -7,6 +7,7 @@ const Op = db.Sequelize.Op;
 const Review = db.review;
 const User = db.user;
 const Platform = db.platform;
+const Country = db.country;
 
 exports.findAll = (req, res) => {
     const query = req.query.query;
@@ -39,6 +40,11 @@ exports.findAll = (req, res) => {
                     attributes: [],
                 },
             },
+            {
+                model: Country,
+                as: "country",
+                attributes: ["country_name"],
+            },
         ]
     })
     .then(movies => {
@@ -56,6 +62,12 @@ exports.findAll = (req, res) => {
                     },
                     {
                         model: Actor,
+                        through: {
+                            attributes: [],
+                        },
+                    },
+                    {
+                        model: Platform,
                         through: {
                             attributes: [],
                         },
