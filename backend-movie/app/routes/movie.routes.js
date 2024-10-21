@@ -3,6 +3,12 @@ module.exports = app => {
 
     var router = require("express").Router();
 
+    // Retrieve all unique Years
+    router.get("/years", movies.findYears);  // Pastikan rute ini didefinisikan lebih dulu
+
+    // Retrieve movies by year
+    router.get("/years/:year", movies.findByYear);  
+
     // Retrieve all Movies
     router.get("/", movies.findAll);
 

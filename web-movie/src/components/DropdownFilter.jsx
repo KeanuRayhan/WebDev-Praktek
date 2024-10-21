@@ -10,6 +10,9 @@ const DropdownFilter = ({ onFilterChange }) => {
   const [countries, setCountries] = useState([]);
   const [selectedCountry, setSelectedCountry] = useState('');
 
+  const [years, setYears] = useState([]);
+  const [selectedYear, setSelectedYear] = useState('');
+
   const [statuses] = useState([
     { id: 'approved', name: 'Approved' }, 
     { id: 'unapproved', name: 'Unapproved' },
@@ -47,36 +50,75 @@ const DropdownFilter = ({ onFilterChange }) => {
       }
     }
 
+    const fetchYears = async () => {
+      try {
+        const response = await fetch('http://localhost:8080/api/movies/years');
+        const data = await response.json();
+        if (Array.isArray(data.years)) {
+          setYears(data.years);  // Set hasil tahun ke state React
+        } else {
+          console.error('Data years is not an array', data.years);
+        }
+      } catch (error) {
+        console.error('Error fetching years:', error);
+      }
+    };
+
     fetchGenres();
     fetchPlatforms();
     fetchCountries();
+    fetchYears();
   }, []);
+
+  const handleYearChange = (event) => {
+    setSelectedYear(event.target.value);
+    onFilterChange({
+        genre_id: selectedGenre,
+        platform_id: selectedPlatform,
+        status: selectedStatus,
+        year: event.target.value,
+        award: event.target.value,
+        country_id: selectedCountry
+
+    });
+  };
 
   const handleGenreChange = (event) => {
     setSelectedGenre(event.target.value);
-    onFilterChange({ genre_id: event.target.value, platform_id: selectedPlatform, status: selectedStatus, country_id: selectedCountry });
+    onFilterChange({ genre_id: event.target.value, platform_id: selectedPlatform, status: selectedStatus, country_id: selectedCountry, year: selectedYear });
   }
 
   const handlePlatformChange = (event) => {
     setSelectedPlatform(event.target.value);
-    onFilterChange({ genre_id: selectedGenre, platform_id: event.target.value, status: selectedStatus, country_id: selectedCountry });
+    onFilterChange({ genre_id: selectedGenre, platform_id: event.target.value, status: selectedStatus, country_id: selectedCountry, year: selectedYear });
   }
 
   const handleStatusChange = (event) => {
     setSelectedStatus(event.target.value);
-    onFilterChange({ genre_id: selectedGenre, platform_id: selectedPlatform, status: event.target.value, country_id: selectedCountry });
+    onFilterChange({ genre_id: selectedGenre, platform_id: selectedPlatform, status: event.target.value, country_id: selectedCountry, year: selectedYear });
   }
 
   const handleCountryChange = (event) => {
     setSelectedCountry(event.target.value);
-    onFilterChange({ genre_id: selectedGenre, platform_id: selectedPlatform, status: selectedStatus, country_id: event.target.value });
+    onFilterChange({ genre_id: selectedGenre, platform_id: selectedPlatform, status: selectedStatus, country_id: event.target.value, year: selectedYear });
   }
+
+  
 
   return (
     <div className="flex justify-between items-center mb-4">
       <div className="flex space-x-4">
         {/* Year */}
-
+        <select 
+            className="border rounded-lg p-2 bg-gray-700"
+            value={selectedYear}
+            onChange={handleYearChange}
+        >
+            <option value="">Year</option>
+            {years.map((year) => (
+                <option key={year} value={year}>{year}</option>
+            ))}
+        </select>
         {/* Genre */}
         <select 
           className="border rounded-lg p-2 bg-gray-700"

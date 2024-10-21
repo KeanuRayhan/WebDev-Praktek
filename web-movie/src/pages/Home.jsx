@@ -46,7 +46,7 @@ const Home = () => {
     navigate(`/movies/${id}`);
   };
 
-  const handleFilterChange = ({ genre_id, platform_id, status, country_id }) => {
+  const handleFilterChange = ({ genre_id, platform_id, status, country_id, year }) => {
     let filtered = movies; // Mulai dengan semua film
   
     // Filter berdasarkan platform
@@ -55,6 +55,7 @@ const Home = () => {
           movie.Platforms && movie.Platforms.some(platform => platform.platform_id === parseInt(platform_id))
       );
     }
+
   
     // Filter berdasarkan genre
     if (genre_id) {
@@ -71,6 +72,11 @@ const Home = () => {
     // Filter berdasarkan country
     if (country_id) {
       filtered = filtered.filter(movie => movie.country_id === parseInt(country_id));
+    }
+
+     // Filter berdasarkan tahun
+    if (year) {
+      filtered = filtered.filter(movie => movie.year === year);
     }
   
     // Update state untuk menampilkan hasil

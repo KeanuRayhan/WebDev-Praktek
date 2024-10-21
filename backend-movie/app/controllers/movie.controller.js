@@ -142,3 +142,58 @@ exports.findOne = (req, res) => {
         });
     });
 };
+
+exports.findYears = (req, res) => {
+    Movie.findAll({
+        attributes: [[db.Sequelize.fn('DISTINCT', db.Sequelize.col('year')), 'year']],
+        order: [['year', 'DESC']]
+    })
+    .then(data => {
+        const years = data.map(item => item.year); // Mengambil nilai tahun dari hasil query
+        res.send({ years }); // Mengirim data tahun ke frontend
+    })
+    .catch(err => {
+        console.error("Error saat mengambil tahun:", err);
+        res.status(500).send({
+            message: err.message || "Some error occurred while retrieving years."
+        });
+    });
+};
+
+
+exports.findByYear = (req, res) => {
+    const year = req.params.year;  // Ambil parameter tahun dari URL
+
+    Movie.findAll({
+        where: { year: year },  // Filter berdasarkan tahun
+        include: [
+            {
+                model: Genre,
+                through: { attributes: [] },
+            },
+            {
+                model: Actor,
+                through: { attributes: [] },
+            },
+            {
+                model: Platform,
+                through: { attributes: [] },
+            },
+        ]
+    })
+    .then(data => {
+        if (data.length > 0) {
+            res.send(data);
+        } else {
+            res.status(404).send({
+                message: `No movies found for year ${year}.`
+            });
+        }
+    })
+    .catch(err => {
+        console.error("Error saat mengambil data:", err);
+        res.status(500).send({
+            message: "Error retrieving movies for year " + year
+        });
+    });
+};
