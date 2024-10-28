@@ -73,6 +73,18 @@ const CmsAwards = () => {
             </div>
           </form>
 
+          {/* Search Bar */}
+          <div className="flex mb-6 justify-end">
+            <input
+              type="text"
+              placeholder="Search awards..."
+              className="border rounded-lg p-2 bg-gray-700 text-white w-1/5 focus:outline-none focus:ring-2 focus:ring-yellow-500"
+            />
+            <button className="bg-yellow-500 text-black font-bold py-2 px-4 rounded ml-2 hover:bg-yellow-600 transition">
+              Search
+            </button>
+          </div>
+
           {/* Table */}
           <div className="overflow-x-auto">
             <table className="min-w-full bg-gray-800 rounded-lg shadow-lg">
@@ -116,3 +128,4 @@ const CmsAwards = () => {
 };
 
 export default CmsAwards;
+
