@@ -15,6 +15,9 @@ import CMSMovieInput from './pages/CMSMovieInput';
 import SearchPage from './pages/SearchPage';
 import PageDetails from './pages/PageDetails';
 import ProtectedRoute from './components/ProtectedRoute';
+import CMSAwards from './pages/CMSAwards';
+import CMSGenres from './pages/CMSGenres';
+import SuspendedPage from './pages/SuspendedPage';
 
 const App = () => {
     return (
@@ -22,6 +25,7 @@ const App = () => {
             <Routes>
                 {/* Rute hanya untuk halaman login */}
                 <Route path="/login" element={<LoginPage />} />
+                <Route path="/suspended" element={<SuspendedPage />} />
                 <Route path="/register" element={<RegistrationPage />} />
 
                 {/* Rute untuk halaman utama dan lainnya */}
@@ -57,7 +61,7 @@ const App = () => {
                     element={
                         <ProtectedRoute roleRequired="admin">
                             <Header />
-                            <div className="flex">
+                            <div className="flex bg-gray-900">
                                 <Sidebar />
                                 <main className="flex-1 p-8">
                                     <CountriesPage />
@@ -72,7 +76,7 @@ const App = () => {
                     element={
                         <ProtectedRoute roleRequired="admin">
                             <Header />
-                            <div className="flex">
+                            <div className="flex bg-gray-900">
                                 <Sidebar />
                                 <main className="flex-1 p-8">
                                     <CommentsPage />
@@ -87,7 +91,7 @@ const App = () => {
                     element={
                         <ProtectedRoute roleRequired="admin">
                             <Header />
-                            <div className="flex">
+                            <div className="flex bg-gray-900">
                                 <Sidebar />
                                 <main className="flex-1 p-8">
                                     <ActorsPage />
@@ -102,7 +106,7 @@ const App = () => {
                     element={
                         <ProtectedRoute roleRequired="admin">
                             <Header />
-                            <div className="flex">
+                            <div className="flex bg-gray-900">
                                 <Sidebar />
                                 <main className="flex-1 p-8">
                                     <UsersPage />
@@ -129,15 +133,33 @@ const App = () => {
                         </ProtectedRoute>
                     }
                 />
+                {/* Rute untuk halaman CMS Award */}
+                <Route
+                    path='/awards'
+                    element={
+                        <ProtectedRoute roleRequired="admin">
+                            <CMSAwards />
+                        </ProtectedRoute>
+                    }
+                />
+                {/* Rute untuk halaman CMS Genre */}
+                <Route
+                    path='/genres'
+                    element={
+                        <ProtectedRoute roleRequired="admin">
+                            <CMSGenres />
+                        </ProtectedRoute>
+                    }
+                />
                 {/* Rute untuk halaman input movie */}
-                {/* <Route
+                <Route
                     path='/input-movie'
                     element={
                         <>
                             <CMSMovieInput />
                         </>
                     }
-                /> */}
+                />
             </Routes>
         </div>
     );
