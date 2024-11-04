@@ -16,9 +16,9 @@ app.use(bodyParser.json());
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.use('/uploads', express.static('uploads'));
+
 const db = require("./app/models");
-const MovieController = require("./app/controllers/movie.controller");
-// const GenreController = require("./app/controllers/genre.controller");
 
 db.sequelize.sync({ force: false }).then(() => {
     console.log("Synced db.");
@@ -35,6 +35,9 @@ require("./app/routes/plaform.routes")(app);
 require('./app/routes/auth.routes')(app);
 require('./app/routes/user.routes')(app);
 require('./app/routes/country.routes')(app);
+require('./app/routes/review.routes')(app);
+require('./app/routes/actor.routes')(app);
+require('./app/routes/awards.routes')(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
