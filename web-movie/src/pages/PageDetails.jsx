@@ -8,6 +8,7 @@ import SidebarHome from '../components/SidebarHome';
 import Dramadetails from '../components/Dramadetails';
 import Synopsis from '../components/Synopsis';
 import MovieDataService from '../services/movie.service';
+import AddReviewSection from '../components/AddReviewSection';
 
 const PageDetails = () => {
     const { id } = useParams();
@@ -24,6 +25,13 @@ const PageDetails = () => {
             });
     }, [id]);
 
+    const handleReviewAdded = (newReview) => {
+        setMovie((prevMovie) => ({
+            ...prevMovie,
+            reviews: [...(prevMovie.reviews || []), newReview]
+        }));
+    };
+
     return (
         <div className="bg-slate-900 min-h-screen text-white">
             {/* Header Section */}
@@ -35,7 +43,7 @@ const PageDetails = () => {
                 <SidebarHome />
 
                 {/* Main Content */}
-                <main className="w-5/6 p-4">
+                <main className="w-5/6 p-4 ml-[16.67%]">
                     {movie ? (
                         <> 
                             {/* Trailer Section */}
@@ -65,6 +73,10 @@ const PageDetails = () => {
                             {/* Reviews Section */}
                             <section className="mt-12">
                                 <ReviewsSection reviews={movie.reviews}/>
+                            </section>
+
+                            <section className="mt-8">
+                                <AddReviewSection movieId={id} onReviewAdded={handleReviewAdded} />
                             </section>
                         </>
                     ) : (

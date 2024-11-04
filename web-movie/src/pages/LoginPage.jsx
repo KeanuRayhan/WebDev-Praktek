@@ -1,11 +1,14 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import Form from 'react-validation/build/form';
 import Input from 'react-validation/build/input';
 import CheckButton from 'react-validation/build/button';
+import { gapi } from 'gapi-script';
 
 import AuthService from '../services/auth.service';
+
+const clientId = "299239094407-147h2jlgcbg7057l0a6lk0flm8f7138t.apps.googleusercontent.com";
 
 const required = (value) => {
     if (!value) {
@@ -27,6 +30,18 @@ const LoginPage = () => {
     const [password, setPassword] = useState("");
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState("");
+
+    // 
+    useEffect(() => {
+        function start() {
+            gapi.client.init({
+                clientId: clientId,
+                scope: "profile email"
+            });
+        }
+
+        gapi.load('client:auth2', start);
+    }, []);
 
     const onChangeUsername = (e) => {
         const username = e.target.value;
@@ -60,13 +75,43 @@ const LoginPage = () => {
                         error.message ||
                         error.toString();
 
+                    // Cek jika pesan menunjukkan bahwa akun disuspend
+                    if (resMessage === "Your account has been suspended. Please contact administrator.") {
+                        navigate("/suspended", {
+                            state: { message: "Your account has been suspended. Please contact our administrator." },
+                        });
+                    } else {
+                        setMessage(resMessage);
+                    }
+
                     setLoading(false);
-                    setMessage(resMessage);
                 }
             );
         } else {
             setLoading(false);
         }
+    };
+
+    const handleGoogleLogin = () => {
+        const auth2 = gapi.auth2.getAuthInstance();
+        auth2.signIn().then((response) => {
+            console.log("Google login success: ", response);
+            const id_token = response.getAuthResponse().id_token;
+
+            // Kirim hanya id_token ke backend untuk login
+            AuthService.googleLogin(id_token)
+                .then(() => {
+                    navigate("/");
+                    window.location.reload();
+                })
+                .catch((error) => {
+                    console.error("Google login failed: ", error);
+                    setMessage("Google login failed. Please try again.");
+                });
+        }).catch((error) => {
+            console.error("Google login error: ", error);
+            setMessage("Login failed. Please try again.");
+        });
     };
 
     return (
@@ -125,6 +170,7 @@ const LoginPage = () => {
                         <button 
                             type="button" 
                             className="w-full bg-yellow-500 text-white py-2 rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 flex items-center justify-center"
+                            onClick={handleGoogleLogin}
                         >
                             <img 
                                 src="https://img.icons8.com/color/16/000000/google-logo.png" 

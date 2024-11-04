@@ -55,7 +55,6 @@ const Home = () => {
           movie.Platforms && movie.Platforms.some(platform => platform.platform_id === parseInt(platform_id))
       );
     }
-
   
     // Filter berdasarkan genre
     if (genre_id) {
@@ -73,12 +72,12 @@ const Home = () => {
     if (country_id) {
       filtered = filtered.filter(movie => movie.country_id === parseInt(country_id));
     }
-
-     // Filter berdasarkan tahun
+  
+    // Filter berdasarkan tahun
     if (year) {
       filtered = filtered.filter(movie => movie.year === year);
     }
-  
+
     // Update state untuk menampilkan hasil
     setFilteredMovies(filtered);
   };  
