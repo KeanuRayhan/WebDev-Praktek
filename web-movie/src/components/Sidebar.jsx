@@ -5,7 +5,7 @@ const Sidebar = () => {
     const location = useLocation();
     
     return (
-        <aside className="w-1/6 bg-black p-4 space-y-8">
+        <aside className="w-1/6 bg-gray-950 p-4 space-y-8">
             <nav className="space-y-4">
                 <Link 
                     to="/" 

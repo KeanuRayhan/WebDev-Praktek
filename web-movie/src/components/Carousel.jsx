@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const Carousel = () => {
     const images = [
@@ -18,6 +18,16 @@ const Carousel = () => {
     const nextSlide = () => {
         setCurrentIndex((prevIndex) => (prevIndex === images.length - 1 ? 0 : prevIndex + 1));
     };
+
+    // Auto-scroll effect
+    useEffect(() => {
+        const intervalId = setInterval(() => {
+            nextSlide();
+        }, 5000); // Ubah setiap 3 detik
+
+        // Bersihkan interval saat komponen unmount
+        return () => clearInterval(intervalId);
+    }, []); // Kosong array, artinya efek ini hanya dijalankan sekali saat komponen pertama kali di-render
 
     return (
         <div className="relative w-full max-w-screen-xl mx-auto mb-8">

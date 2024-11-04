@@ -62,26 +62,13 @@ const DropdownFilter = ({ onFilterChange }) => {
       } catch (error) {
         console.error('Error fetching years:', error);
       }
-    };
+    }
 
     fetchGenres();
     fetchPlatforms();
     fetchCountries();
     fetchYears();
   }, []);
-
-  const handleYearChange = (event) => {
-    setSelectedYear(event.target.value);
-    onFilterChange({
-        genre_id: selectedGenre,
-        platform_id: selectedPlatform,
-        status: selectedStatus,
-        year: event.target.value,
-        award: event.target.value,
-        country_id: selectedCountry
-
-    });
-  };
 
   const handleGenreChange = (event) => {
     setSelectedGenre(event.target.value);
@@ -103,7 +90,17 @@ const DropdownFilter = ({ onFilterChange }) => {
     onFilterChange({ genre_id: selectedGenre, platform_id: selectedPlatform, status: selectedStatus, country_id: event.target.value, year: selectedYear });
   }
 
-  
+  const handleYearChange = (event) => {
+    setSelectedYear(event.target.value);
+    onFilterChange({
+        genre_id: selectedGenre,
+        platform_id: selectedPlatform,
+        status: selectedStatus,
+        year: event.target.value,
+        // award: event.target.value,
+        country_id: selectedCountry
+    });
+  }
 
   return (
     <div className="flex justify-between items-center mb-4">
@@ -119,6 +116,7 @@ const DropdownFilter = ({ onFilterChange }) => {
                 <option key={year} value={year}>{year}</option>
             ))}
         </select>
+
         {/* Genre */}
         <select 
           className="border rounded-lg p-2 bg-gray-700"
