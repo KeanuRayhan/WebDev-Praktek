@@ -5,6 +5,9 @@ module.exports = (sequelize, DataTypes) => {
             primaryKey: true,
             autoIncrement: true,
         },
+        google_id: {
+            type: DataTypes.STRING,
+        },
         username: {
             type: DataTypes.STRING,
         },
@@ -16,6 +19,11 @@ module.exports = (sequelize, DataTypes) => {
         },
         role: {  // Menambahkan kolom role
             type: DataTypes.ENUM('user', 'admin'),  // ENUM dengan nilai USER dan ADMIN
+            allowNull: false
+        },
+        issuspended: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false,
             allowNull: false
         },
     }, {

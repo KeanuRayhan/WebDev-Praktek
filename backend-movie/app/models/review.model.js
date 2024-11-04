@@ -8,6 +8,21 @@ module.exports = (sequelize, DataTypes) => {
         comments: {
             type: DataTypes.STRING,
         },
+        rating: {
+            type: DataTypes.INTEGER,
+            validate: {
+                min: 1,
+                max: 5
+            }
+        },
+        movie_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+        },
+        user_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+        },
     }, {
         freezeTableName: true,
         timestamps: false

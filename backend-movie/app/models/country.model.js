@@ -3,9 +3,12 @@ module.exports = (sequelize, DataTypes) => {
         country_id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
+            autoIncrement: true,  // Pastikan ini ada
+            allowNull: false
         },
         country_name: {
             type: DataTypes.STRING,
+            allowNull: false
         },
     }, {
         freezeTableName: true,
@@ -13,4 +16,4 @@ module.exports = (sequelize, DataTypes) => {
     });
 
     return Country;
-}
+};

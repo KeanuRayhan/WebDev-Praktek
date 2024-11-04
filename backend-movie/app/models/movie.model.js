@@ -3,6 +3,7 @@ module.exports = (sequelize, DataTypes) => {
       movie_id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
+        autoIncrement: true
       },
       title: {
         type: DataTypes.STRING

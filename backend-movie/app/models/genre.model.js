@@ -3,6 +3,7 @@ module.exports = (sequelize, DataTypes) => {
         genre_id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
+            autoIncrement: true,
         },
         genre: {
             type: DataTypes.STRING,

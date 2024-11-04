@@ -3,6 +3,7 @@ module.exports = (sequelize, DataTypes) => {
         actor_id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
+            autoIncrement: true,
         },
         actor_name: {
             type: DataTypes.STRING,
@@ -12,6 +13,9 @@ module.exports = (sequelize, DataTypes) => {
         },
         url_photo: {
             type: DataTypes.STRING,
+        },
+        country_id: {
+            type: DataTypes.INTEGER,
         },
     }, {
         freezeTableName: true,
