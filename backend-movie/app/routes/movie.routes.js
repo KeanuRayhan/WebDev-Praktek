@@ -12,8 +12,11 @@ module.exports = app => {
     // Retrieve all Movies
     router.get("/", movies.findAll);
 
-    // Retrieve a single Tutorial with id
+    // Retrieve a single Movie with id
     router.get("/:id", movies.findOne);
+
+    // Create a new Movie
+    router.post("/", movies.create);
 
     app.use('/api/movies', router);
 }

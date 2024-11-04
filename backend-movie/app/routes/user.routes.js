@@ -23,4 +23,10 @@ module.exports = function(app) {
     [authJwt.verifyToken, authJwt.isAdmin],
     controller.adminBoard
   );
+
+  app.get("/api/users", [authJwt.verifyToken, authJwt.isAdmin], controller.getAllUsers);
+  app.get("/api/users/search", [authJwt.verifyToken, authJwt.isAdmin], controller.searchUser);
+
+  // Rute untuk suspend pengguna
+  app.put("/api/users/suspend/:user_id", controller.suspendUser);
 };

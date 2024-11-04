@@ -1,5 +1,6 @@
 const { verifySignUp } = require("../middleware");
 const controller = require("../controllers/auth.controller");
+const googleController = require("../controllers/googleLogin.controller"); // Impor controller baru
 
 module.exports = function(app) {
   app.use(function(req, res, next) {
@@ -19,5 +20,7 @@ module.exports = function(app) {
     controller.signup
   );
 
+  app.post("/api/auth/google-login", googleController.googleLogin);
   app.post("/api/auth/signin", controller.signin);
+  
 };
