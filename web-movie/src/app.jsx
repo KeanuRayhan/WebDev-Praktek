@@ -18,6 +18,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 import CMSAwards from './pages/CMSAwards';
 import CMSGenres from './pages/CMSGenres';
 import SuspendedPage from './pages/SuspendedPage';
+import CMSMovieEdit from './pages/CMSMovieEdit';
 
 const App = () => {
     return (
@@ -157,6 +158,14 @@ const App = () => {
                     element={
                         <>
                             <CMSMovieInput />
+                        </>
+                    }
+                />
+                <Route
+                    path='/edit-movie/:movieId'
+                    element={
+                        <>
+                            <CMSMovieEdit />
                         </>
                     }
                 />
