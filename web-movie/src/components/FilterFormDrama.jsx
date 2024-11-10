@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { FaSearch, FaTimes } from 'react-icons/fa';
 
 const FilterFormDrama = ({ onFilterChange, onSearchChange, onReset }) => {
     const [statuses] = useState([
@@ -47,11 +48,11 @@ const FilterFormDrama = ({ onFilterChange, onSearchChange, onReset }) => {
                         <option>10</option>
                     </select>
                 </div> */}
-                <div className="flex-1 justify-self-end space-x-4">
+                <div className="flex justify-end space-x-2">
                     <input
                         type="text"
                         placeholder="Search Movie"
-                        className="border rounded-lg p-2 bg-gray-700 text-white w-1/2 focus:outline-none focus:ring-2 focus:ring-yellow-500"
+                        className="border rounded-lg p-2 bg-gray-700 text-white w-1/1 focus:outline-none focus:ring-2 focus:ring-yellow-500"
                         id="search-comment"
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
@@ -61,14 +62,14 @@ const FilterFormDrama = ({ onFilterChange, onSearchChange, onReset }) => {
                         onClick={handleSearch}
                         className="bg-yellow-500 text-black font-bold py-2 px-4 rounded hover:bg-yellow-600 transition"
                     >
-                        Search
+                        <FaSearch />
                     </button> 
                     <button
                         type="button"
                         onClick={handleReset}
                         className="bg-red-500 text-white font-bold py-2 px-4 rounded hover:bg-red-600 transition"
                     >
-                        Reset
+                        <FaTimes />
                     </button>
                 </div>
             </div>
