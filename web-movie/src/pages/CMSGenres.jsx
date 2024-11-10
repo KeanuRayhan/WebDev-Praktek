@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Sidebar from '../components/Sidebar';
 import MovieDataService from '../services/movie.service';
+import { FaSearch, FaTimes } from 'react-icons/fa';
+import Header from '../components/Header';
 
 const GenresPage = () => {
     const [genres, setGenres] = useState([]);
@@ -146,12 +148,7 @@ const GenresPage = () => {
     return (
         <div className="bg-gray-900 text-white min-h-screen">
             {/* Header */}
-            <header className="bg-black text-yellow-500 p-4 flex items-center justify-between">
-                <h1 className="text-3xl font-bold">Dramaku</h1>
-                <button className="bg-yellow-500 text-black font-bold py-2 px-4 rounded hover:bg-yellow-600 transition">
-                    PROFIL
-                </button>
-            </header>
+            <Header />
 
             <div className="flex min-h-screen">
                 {/* Sidebar */}
@@ -192,27 +189,27 @@ const GenresPage = () => {
                                     <option value="Z-A">Z-A</option>
                                 </select>
                             </div>
-                            <div className="flex items-center space-x-2 ml-auto">
+                            <div className="flex space-x-2 ml-auto">
                                 <input
                                     type="text"
                                     placeholder="Search genres..."
                                     value={searchTerm}
                                     onChange={(e) => setSearchTerm(e.target.value)}
-                                    className="border rounded-lg p-2 bg-gray-700 text-white w-1/2 focus:outline-none focus:ring-2 focus:ring-yellow-500"
+                                    className="border rounded-lg p-2 bg-gray-700 text-white w-1/1 focus:outline-none focus:ring-2 focus:ring-yellow-500"
                                 />
                                 <button
                                     type="button"
                                     onClick={handleSearch}
                                     className="bg-yellow-500 text-black font-bold py-2 px-4 rounded hover:bg-yellow-600 transition"
                                 >
-                                    Search
+                                    <FaSearch />
                                 </button> 
                                 <button
                                     type="button"
                                     onClick={handleReset}
                                     className="bg-red-500 text-white font-bold py-2 px-4 rounded hover:bg-red-600 transition"
                                 >
-                                    Reset
+                                    <FaTimes />
                                 </button>
                             </div>
                         </div>
