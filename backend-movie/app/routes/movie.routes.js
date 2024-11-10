@@ -18,5 +18,11 @@ module.exports = app => {
     // Create a new Movie
     router.post("/", movies.create);
 
+    // Update a Movie with id
+    router.put("/:id", movies.update);
+
+    // Delete a Movie with id
+    router.delete("/:id", movies.delete);
+
     app.use('/api/movies', router);
 }
