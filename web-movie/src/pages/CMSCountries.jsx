@@ -160,30 +160,7 @@ const CountriesPage = () => {
           </form>
 
           {/* Search and Sort */}
-          <div className="flex items-center justify-end space-x-4 mb-6">
-            <div className="flex items-center">
-              <input
-                type="text"
-                placeholder="Search Country"
-                className="border border-gray-600 rounded-l-lg p-2 bg-gray-700 text-white w-48 focus:outline-none focus:ring-2 focus:ring-yellow-500" // Cleaned up border
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-              />
-              <button
-                onClick={handleSearch}
-                className="border border-gray-600 rounded-r-lg px-4 py-2 bg-yellow-500 text-black font-bold hover:bg-yellow-600 transition flex items-center space-x-2 ml-2"
-              >
-                <FaSearch />
-              </button>
-              {appliedSearchQuery && (
-                <button
-                  onClick={handleResetSearch}
-                  className="ml-2 px-3 py-2 bg-red-500 text-white font-bold rounded hover:bg-red-600 transition"
-                >
-                  <FaTimes />
-                </button>
-              )}
-            </div>
+          <div className="flex items-center justify-end space-x-2 mb-6">
             <select
               value={sortOrder}
               onChange={(e) => setSortOrder(e.target.value)}
@@ -192,6 +169,30 @@ const CountriesPage = () => {
               <option value="A-Z">A-Z</option>
               <option value="Z-A">Z-A</option>
             </select>
+            <div className="flex">
+              <input
+                type="text"
+                placeholder="Search Country"
+                className="border border-gray-600 rounded-lg p-2 bg-gray-700 text-white w-48 focus:outline-none focus:ring-2 focus:ring-yellow-500" // Cleaned up border
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+              />
+              <button
+                onClick={handleSearch}
+                className="rounded-lg px-4 py-2 bg-yellow-500 text-black font-bold hover:bg-yellow-600 transition ml-2"
+              >
+                <FaSearch />
+              </button>
+              {appliedSearchQuery && (
+                <button
+                  onClick={handleResetSearch}
+                  className="ml-2 px-4 py-2 bg-red-500 text-white font-bold rounded-lg hover:bg-red-600 transition"
+                >
+                  <FaTimes />
+                </button>
+              )}
+            </div>
+            
           </div>
 
           {notification && (
