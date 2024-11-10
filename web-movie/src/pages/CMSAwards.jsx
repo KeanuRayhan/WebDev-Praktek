@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Sidebar from '../components/Sidebar';
 import { FaSearch, FaTimes } from 'react-icons/fa';
+import Header from '../components/Header';
 
 const CmsAwards = () => {
   const [awards, setAwards] = useState([]);
@@ -161,12 +162,7 @@ const CmsAwards = () => {
 
   return (
     <div className="bg-gray-900 text-white min-h-screen">
-      <header className="bg-black text-yellow-500 p-4 flex items-center justify-between">
-        <h1 className="text-3xl font-bold">Dramaku</h1>
-        <button className="bg-yellow-500 text-black font-bold py-2 px-4 rounded hover:bg-yellow-600 transition">
-          PROFIL
-        </button>
-      </header>
+      <Header />
 
       <div className="flex min-h-screen">
         <Sidebar />
@@ -223,7 +219,7 @@ const CmsAwards = () => {
             </div>
           </form>
 
-            <div className="flex mb-6 justify-end">
+          <div className="flex mb-6 justify-end">
             {/* Dropdown filter untuk urutan A-Z dan Z-A */}
             <select
               value={sortOrder}
