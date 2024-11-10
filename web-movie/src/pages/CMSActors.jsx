@@ -1,6 +1,7 @@
 // src/components/ActorsPage.jsx
 import React, { useState, useEffect } from 'react';
 import MovieDataService from '../services/movie.service';
+import { FaSearch, FaTimes } from 'react-icons/fa';
 
 const ActorsPage = () => {
     const [actors, setActors] = useState([]);
@@ -287,27 +288,27 @@ const ActorsPage = () => {
                             <option value="Z-A">Z-A</option>
                         </select>
                     </div>
-                    <div className="flex items-center space-x-2 ml-auto">
+                    <div className="flex space-x-2 ml-auto">
                         <input
                             type="text"
                             placeholder="Search actor..."
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
-                            className="border rounded-lg p-2 bg-gray-700 text-white w-1/2 focus:outline-none focus:ring-2 focus:ring-yellow-500"
+                            className="border rounded-lg p-2 bg-gray-700 text-white w-1/1 focus:outline-none focus:ring-2 focus:ring-yellow-500"
                         />
                         <button
                             type="button"
                             onClick={handleSearch}
                             className="bg-yellow-500 text-black font-bold py-2 px-4 rounded hover:bg-yellow-600 transition"
                         >
-                            Search
+                            <FaSearch />
                         </button> 
                         <button
                             type="button"
                             onClick={handleReset}
                             className="bg-red-500 text-white font-bold py-2 px-4 rounded hover:bg-red-600 transition"
                         >
-                            Reset
+                            <FaTimes />
                         </button>
                     </div>
                 </div>
