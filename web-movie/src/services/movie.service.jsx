@@ -22,6 +22,18 @@ class MovieDataService {
         });
     };
 
+    updateMovie(movieId, movieData) {
+        return http.put(`/movies/${movieId}`, movieData, {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+            }
+        });
+    };
+
+    deleteMovie(movieId) {
+        return http.delete(`/movies/${movieId}`);
+    };
+
     /* COUNTRY SERVICE */
     // Mendapatkan semua country
     getAllCountries() {
