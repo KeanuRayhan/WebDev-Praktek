@@ -38,12 +38,11 @@ exports.googleLogin = async (req, res) => {
         const accessToken = generateAccessToken(user); // Fungsi untuk membuat token
 
         res.status(200).json({
-            accessToken: accessToken,
-            user: {
-                id: user.id,
-                username: user.username,
-                email: user.email,
-            },
+            id: user.user_id,
+            username: user.username,
+            email: user.email,
+            role: user.role,  // Mengembalikan role pengguna
+            accessToken: accessToken
         });
     } catch (error) {
         console.error("Google login error: ", error);
@@ -54,8 +53,8 @@ exports.googleLogin = async (req, res) => {
 // Fungsi untuk generate token akses
 function generateAccessToken(user) {
     return jwt.sign(
-        { id: user.id, email: user.email },
+        { id: user.user_id, email: user.email },
         authConfig.secret,
         { expiresIn: '1h' } // Sesuaikan waktu kadaluarsa sesuai kebutuhan
     );
-}
+};
