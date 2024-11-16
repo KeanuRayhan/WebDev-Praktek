@@ -27,11 +27,18 @@ const MovieCard = ({ title, url, year, genres, id }) => {
     };
   }, []);
 
+  const truncateGenres = (genres, maxLength) => {
+    const combinedGenres = genres.join(', ');
+    return combinedGenres.length > maxLength
+      ? `${combinedGenres.substring(0, maxLength)}...`
+      : combinedGenres;
+  };
+
   return (
     <Link to={`/movies/${id}`}>
       <div 
         ref={cardRef}
-        className="bg-gray-800 border border-gray-700 shadow rounded-lg p-4 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:border-yellow-500 hover:bg-gray-700 group"
+        className="bg-gray-800 border border-gray-700 shadow rounded-lg p-4 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:border-yellow-500 hover:bg-gray-700 group h-full"
       >
         <div className="relative overflow-hidden rounded-lg mb-2">
           {isInView && (
@@ -47,7 +54,7 @@ const MovieCard = ({ title, url, year, genres, id }) => {
           {title}
         </h2>
         <p className="text-sm">{year}</p>
-        <p className="text-sm">{genres.join(', ')}</p>
+        <p className="text-sm">{truncateGenres(genres, 20)}</p>
         {/* <p className="text-sm">Rate {rating}/5</p>
         <p className="text-sm">{views} views</p> */}
       </div>
