@@ -26,9 +26,8 @@ const ReviewsSection = ({ reviews }) => {
         <div className="w-3/4 mt-8">
             <h2 className="text-xl font-bold text-white">What People Think About This Drama</h2>
             <div className="space-y-4 mt-4">
-                {/* Ulangi blok ini untuk setiap review */}
-                {reviews.map((review, index) => {
-                    return (
+                {reviews && reviews.length > 0 ? (
+                    reviews.map((review, index) => (
                         <div key={index} className="border-b border-gray-700 pb-4">
                             <div className="flex justify-between items-center">
                                 <h3 className="text-lg font-semibold text-gray-400">
@@ -40,8 +39,10 @@ const ReviewsSection = ({ reviews }) => {
                             </div>
                             <p className="mt-2 text-gray-400">{review.comments}</p>
                         </div>
-                    )
-                })}
+                    ))
+                ) : (
+                    <p className="text-gray-400">No reviews available for this drama yet. Be the first to review!</p>
+                )}  
             </div>
         </div>
     );
