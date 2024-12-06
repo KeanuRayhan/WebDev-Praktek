@@ -3,4 +3,6 @@ WORKDIR /app
 COPY ./package*.json ./
 RUN npm i
 COPY . .
+# coba nambah port
+EXPOSE 8080
 CMD ["npm", "start"]

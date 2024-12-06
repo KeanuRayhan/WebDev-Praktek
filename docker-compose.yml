@@ -39,6 +39,7 @@ services:
     depends_on:
       postgres:
         condition: service_healthy
+    command: npm start  # Tambahkan perintah start di sini jika perlu
 
   client:
     build:
@@ -51,6 +52,7 @@ services:
     depends_on:
       server:
         condition: service_started
+    command: npm start  # Jalankan build frontend
   
   nginx:
     image: nginx:latest
